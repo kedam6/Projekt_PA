@@ -6,7 +6,10 @@
 #include "PositionChecker.h"
 #include "GameInitInfo.h"
 #include "SdlUtils.h"
+#include "NoiseMaker.h"
+#include "StageCreator.h"
 
+//slabe podejscie do DI ale coz
 
 class GlobalInstances
 {
@@ -20,21 +23,22 @@ private:
 	GameEffects gameEffects;
 	GameSupport support;
 	SdlUtils sdlUtils;
-
-	//singleton
-	//GlobalInstances(GlobalInstances const&);
-	//void operator=(GlobalInstances const&);
+	NoiseMaker noiseMaker;
+	StageCreator stageCreator;
 
 public:
 	GlobalInstances()
 	{
-		initializer = GameInitInfo();
+		
 		renderer = Renderer();
 		posChecker = PositionChecker();
 		graphics = Graphics();
 		gameEffects = GameEffects();
 		support = GameSupport();
 		sdlUtils = SdlUtils();
+		noiseMaker = NoiseMaker();
+		stageCreator = StageCreator(graphics);
+		initializer = GameInitInfo(graphics, renderer, posChecker, gameEffects, support, noiseMaker, stageCreator);
 		engine = Engine(sdlUtils, initializer, renderer, posChecker, graphics, gameEffects, support);
 	}
 	~GlobalInstances();

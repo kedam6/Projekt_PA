@@ -130,10 +130,12 @@
     <ClCompile Include="GlobalInstances.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NoiseMaker.cpp" />
     <ClCompile Include="PixelBuffer.cpp" />
     <ClCompile Include="PositionChecker.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SdlUtils.cpp" />
+    <ClCompile Include="StageCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="lib\SDL2.dll">
@@ -161,10 +163,12 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="IFactory.h" />
     <ClInclude Include="GameObjects.h" />
+    <ClInclude Include="NoiseMaker.h" />
     <ClInclude Include="PixelBuffer.h" />
     <ClInclude Include="PositionChecker.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SdlUtils.h" />
+    <ClInclude Include="StageCreator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

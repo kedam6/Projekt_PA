@@ -1,22 +1,25 @@
 #pragma once
 
+//teren
 #define DATA_WALL 1
 #define DATA_DIRT 2
 #define DATA_STEELWALL 3
 //zamienia kamienie w klejnoty
 #define DATA_MAGICWALL 4
 #define DATA_MAGICWALL_ACTIVE 5
-//firefly - eksplozja
+//gracz
 #define DATA_FIREFLY_RIGHT 6
 #define DATA_FIREFLY_LEFT 7
 #define DATA_FIREFLY_TOP 8
 #define DATA_FIREFLY_DOWN 9
-//idk
+//przeciwnicy
 #define DATA_BUTTERFLY_RIGHT 10
 #define DATA_BUTTERFLY_LEFT 11
 #define DATA_BUTTERFLY_UP 12
 #define DATA_BUTTERFLY_DOWN 13
 
+
+//efekty/akcje
 #define DATA_BOULDER 14
 #define DATA_BOULDER_FALL 15
 #define DATA_DIAMOND 16
@@ -29,6 +32,7 @@
 #define DATA_AMOEBA 23
 #define DATA_ROCKFORD 24
 #define DATA_ROCKFORD_GRAB 25
+
 //eksplozja zajmuje sporo klatek
 #define DATA_EXPLOSION1 26
 #define DATA_EXPLOSION2 27
@@ -40,12 +44,16 @@
 #define DATA_DEXPLOSION3 33
 #define DATA_DEXPLOSION4 34
 #define DATA_DEXPLOSION5 35
+
+//ksztalty
 #define DATA_DRAW_LINE 36
 #define DATA_DRAW_POINT 37
 #define DATA_DRAW_FILLRECT 38
 #define DATA_DRAW_FILLRECT2 39
 #define DATA_DRAW_RASTER 40
 #define DATA_DRAW_RECTANGLE 41
+
+//kolory
 #define DATA_COLOR_ORANGE 42
 #define DATA_COLOR_GRAY1 43
 #define DATA_COLOR_GRAY2 44
