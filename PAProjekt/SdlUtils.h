@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "SDL.h"
+#include "PixelBuffer.h"
 
 using namespace std;
 
@@ -24,13 +25,13 @@ public:
 	SdlUtils();
 	~SdlUtils();
 
-	unsigned int* SdlInit(int height, int width, const char* title, int fps);
+	PixelBuffer SdlInit(int height, int width, const char* title, int fps);
 	void SdlClose();
 	void SdlWindowSize(int height, int width);
 	int SdlHandleEvents(void* pixels);
 	void SdlReleaseKeys();
 	int SdlGetKey(int key);
-	int SdlLimitFps(int* limiter, int fps);
+	int SdlLimitFps(int* limiter);
 	unsigned int GetTouch(unsigned int* x, unsigned int* y);
 
 };

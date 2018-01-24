@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 
-Engine::Engine(SdlUtils utils)
+Engine::Engine(SdlUtils utils, GameInitInfo initializer, Renderer renderer, PositionChecker positionChecker, Graphics graphics, GameEffects gameEff, GameSupport gameSupport)
 {
 	initializer = GameInitInfo();
 	renderer = Renderer();
@@ -15,6 +15,9 @@ Engine::Engine(SdlUtils utils)
 	gameEffects = GameEffects();
 	support = GameSupport();
 	sdlUtils = utils;
+}
+Engine::Engine()
+{
 }
 
 
@@ -512,5 +515,5 @@ void Engine::Process(GameInfo * game)
 		}
 	}
 
-
+	sdlUtils.SdlReleaseKeys();
 }

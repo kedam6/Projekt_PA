@@ -21,7 +21,8 @@ private:
 	SdlUtils sdlUtils;
 
 public:
-	Engine(SdlUtils utils);
+	Engine(SdlUtils utils, GameInitInfo initializer, Renderer renderer, PositionChecker positionChecker, Graphics graphics, GameEffects gameEff, GameSupport gameSupport);
+	Engine();
 	~Engine();
 
 	void Process(GameInfo* game);
