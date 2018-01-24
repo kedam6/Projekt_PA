@@ -119,6 +119,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cave.cpp" />
+    <ClCompile Include="CaveFactory.cpp" />
+    <ClCompile Include="ColorRepository.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEffects.cpp" />
@@ -129,12 +131,15 @@
     <ClCompile Include="GameSupport.cpp" />
     <ClCompile Include="GlobalInstances.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="LookupTable.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NoiseMaker.cpp" />
     <ClCompile Include="PixelBuffer.cpp" />
     <ClCompile Include="PositionChecker.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SdlUtils.cpp" />
+    <ClCompile Include="Sin32LookupTable.cpp" />
+    <ClCompile Include="Sin64LookupTable.cpp" />
     <ClCompile Include="StageCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,7 +154,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cave.h" />
+    <ClInclude Include="CaveFactory.h" />
     <ClInclude Include="CaveInfo.h" />
+    <ClInclude Include="ColorRepository.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameEffects.h" />
@@ -163,11 +170,15 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="IFactory.h" />
     <ClInclude Include="GameObjects.h" />
+    <ClInclude Include="IRepository.h" />
+    <ClInclude Include="LookupTable.h" />
     <ClInclude Include="NoiseMaker.h" />
     <ClInclude Include="PixelBuffer.h" />
     <ClInclude Include="PositionChecker.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SdlUtils.h" />
+    <ClInclude Include="Sin32LookupTable.h" />
+    <ClInclude Include="Sin64LookupTable.h" />
     <ClInclude Include="StageCreator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

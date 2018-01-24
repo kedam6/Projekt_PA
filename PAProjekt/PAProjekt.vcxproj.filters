@@ -31,9 +31,6 @@
     <Filter Include="Header Files\Global">
       <UniqueIdentifier>{eb581049-0ed6-4e14-b6b1-36a7f200b4f3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Interfaces">
-      <UniqueIdentifier>{1de3a387-35af-42e7-ac28-ed07a5b06c32}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Utils">
       <UniqueIdentifier>{3a566a8f-5861-413b-aa3b-1c1f815549b0}</UniqueIdentifier>
     </Filter>
@@ -46,42 +43,48 @@
     <Filter Include="Source Files\Global">
       <UniqueIdentifier>{84684e0c-df05-4185-8755-1e29d1336d5d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Models">
-      <UniqueIdentifier>{a6750f70-d753-4944-8dc5-cbf94264d920}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Models">
-      <UniqueIdentifier>{230ada0a-77f1-4a00-b89d-012da3d18dd7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Inputs">
       <UniqueIdentifier>{cb7b19e1-a679-426f-a281-fd6990dc8b87}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Graphics">
       <UniqueIdentifier>{0dea9d0c-ca30-4231-92ef-85e9e3608bcd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Business">
+      <UniqueIdentifier>{a44cd65a-f294-4de3-aa42-fa96c7000371}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Business\Factories">
+      <UniqueIdentifier>{0c7b189f-2a65-4987-80ff-df3a5a5e1442}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Business\Repositories">
+      <UniqueIdentifier>{e6ab21bf-fc7c-4e9d-93dd-fb410551382b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Business\Models">
+      <UniqueIdentifier>{a6750f70-d753-4944-8dc5-cbf94264d920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Business\Interfaces">
+      <UniqueIdentifier>{1de3a387-35af-42e7-ac28-ed07a5b06c32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Business">
+      <UniqueIdentifier>{5e607cbb-eee0-41c5-9ce6-122d44f869a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Business\Repositories">
+      <UniqueIdentifier>{14983d18-95d9-4f48-be72-35fe6b859302}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Business\Factories">
+      <UniqueIdentifier>{a009e138-1f39-40e4-a5de-5725980ae7de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Business\Models">
+      <UniqueIdentifier>{230ada0a-77f1-4a00-b89d-012da3d18dd7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Cave.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameSupport.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameInitInfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEffects.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SdlUtils.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GameFactory.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="GlobalInstances.cpp">
@@ -91,13 +94,10 @@
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="PixelBuffer.cpp">
-      <Filter>Source Files\Models</Filter>
+      <Filter>Source Files\Business\Models</Filter>
     </ClCompile>
     <ClCompile Include="GameInfo.cpp">
-      <Filter>Source Files\Models</Filter>
-    </ClCompile>
-    <ClCompile Include="GameInfoFactory.cpp">
-      <Filter>Source Files\Game</Filter>
+      <Filter>Source Files\Business\Models</Filter>
     </ClCompile>
     <ClCompile Include="PositionChecker.cpp">
       <Filter>Source Files\Inputs</Filter>
@@ -113,6 +113,39 @@
     </ClCompile>
     <ClCompile Include="StageCreator.cpp">
       <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="GameInitInfo.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GameInfoFactory.cpp">
+      <Filter>Source Files\Business\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFactory.cpp">
+      <Filter>Source Files\Business\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="CaveFactory.cpp">
+      <Filter>Source Files\Business\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorRepository.cpp">
+      <Filter>Source Files\Business\Repositories</Filter>
+    </ClCompile>
+    <ClCompile Include="Cave.cpp">
+      <Filter>Source Files\Business\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSupport.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEffects.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="LookupTable.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Sin32LookupTable.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Sin64LookupTable.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -132,26 +165,14 @@
     </Library>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cave.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameSupport.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameEffects.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GlobalValues.h">
       <Filter>Header Files\Global</Filter>
-    </ClInclude>
-    <ClInclude Include="GameFactory.h">
-      <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="IFactory.h">
-      <Filter>Header Files\Interfaces</Filter>
+      <Filter>Header Files\Business\Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="GlobalInstances.h">
       <Filter>Header Files\Global</Filter>
@@ -166,13 +187,10 @@
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="PixelBuffer.h">
-      <Filter>Header Files\Models</Filter>
+      <Filter>Header Files\Business\Models</Filter>
     </ClInclude>
     <ClInclude Include="GameInfo.h">
-      <Filter>Header Files\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="GameInfoFactory.h">
-      <Filter>Header Files\Game</Filter>
+      <Filter>Header Files\Business\Models</Filter>
     </ClInclude>
     <ClInclude Include="GameObjects.h">
       <Filter>Header Files\Global</Filter>
@@ -194,6 +212,39 @@
     </ClInclude>
     <ClInclude Include="StageCreator.h">
       <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="IRepository.h">
+      <Filter>Header Files\Business\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFactory.h">
+      <Filter>Header Files\Business\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="GameInfoFactory.h">
+      <Filter>Header Files\Business\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="CaveFactory.h">
+      <Filter>Header Files\Business\Factories</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSupport.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Cave.h">
+      <Filter>Header Files\Business\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorRepository.h">
+      <Filter>Header Files\Business\Repositories</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEffects.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="LookupTable.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Sin32LookupTable.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Sin64LookupTable.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,6 +11,7 @@
 #define CAVE_COUNT 3
 
 //wewnetrzne potezebne zmienne
-#define UNCOVER_LOOP 9
+//ilosc cykli szumu, 1 - 8 klatek
+#define UNCOVER_LOOP 2
 #define START_DELAY 12
 #define ZOOM 21

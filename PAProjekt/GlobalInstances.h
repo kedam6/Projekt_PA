@@ -25,18 +25,19 @@ private:
 	SdlUtils sdlUtils;
 	NoiseMaker noiseMaker;
 	StageCreator stageCreator;
+	ColorRepository colorRepo;
 
 public:
 	GlobalInstances()
 	{
-		
-		renderer = Renderer();
 		posChecker = PositionChecker();
 		graphics = Graphics();
 		gameEffects = GameEffects();
 		support = GameSupport();
 		sdlUtils = SdlUtils();
 		noiseMaker = NoiseMaker();
+		colorRepo = ColorRepository();
+		renderer = Renderer(colorRepo);
 		stageCreator = StageCreator(graphics);
 		initializer = GameInitInfo(graphics, renderer, posChecker, gameEffects, support, noiseMaker, stageCreator);
 		engine = Engine(sdlUtils, initializer, renderer, posChecker, graphics, gameEffects, support);

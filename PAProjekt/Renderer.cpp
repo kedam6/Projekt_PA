@@ -4,11 +4,17 @@
 #include "Graphics.h"
 #include <random>
 
+//font dla liczb 1 2 3 4 5 6 7 8 9 0
 static unsigned int font5x3[] = { 32319,17393,24253,32437,31879,30391,29343,31905,32447,31911 };
 
 
 Renderer::Renderer()
 {
+}
+
+Renderer::Renderer(ColorRepository repo)
+{
+	this->colorRepo = repo;
 }
 
 
@@ -52,13 +58,8 @@ void RenderDigits(int x, int y, const char *text, int typea, int typeb, char dis
 
 }
 
-
-
-void Renderer::RenderGame(GameInfo game, unsigned int * pixelBuffer, unsigned int zoom)
+void Renderer::HandleUncover(GameInfo& game)
 {
-	Graphics g = Graphics();
-	_renderTick++;
-
 	if (game.Tick < UNCOVER_LOOP)
 	{
 		for (int line = 0; line < CAVE_HEIGHT; line++)
@@ -73,12 +74,10 @@ void Renderer::RenderGame(GameInfo game, unsigned int * pixelBuffer, unsigned in
 			game.covered[pos][line] = 0;
 		}
 	}
+}
 
-	char display[CAVE_WIDTH][(INFO_HEIGHT + CAVE_HEIGHT)];
-	memset(display, 0, (INFO_HEIGHT + CAVE_HEIGHT) * CAVE_WIDTH);
-
-	//cave part:
-
+void Renderer::WriteCavePart(GameInfo& game, char display[CAVE_WIDTH][(INFO_HEIGHT + CAVE_HEIGHT)])
+{
 	for (int y = 0; y < CAVE_HEIGHT; y++)
 	{
 		for (int x = 0; x < CAVE_WIDTH; x++)
@@ -102,9 +101,15 @@ void Renderer::RenderGame(GameInfo game, unsigned int * pixelBuffer, unsigned in
 			display[x][y] = field;
 		}
 	}
+}
 
-	//info part:
+void Renderer::CreateDisplay(char ret[CAVE_WIDTH][(INFO_HEIGHT + CAVE_HEIGHT)])
+{
+	memset(ret, 0, (INFO_HEIGHT + CAVE_HEIGHT) * CAVE_WIDTH);
+}
 
+void Renderer::WriteInfoPart(GameInfo& game, char display[CAVE_WIDTH][(INFO_HEIGHT + CAVE_HEIGHT)])
+{
 	for (int y = CAVE_HEIGHT; y < (CAVE_HEIGHT + INFO_HEIGHT); y++)
 	{
 		for (int x = 0; x < CAVE_WIDTH; x++)
@@ -118,23 +123,25 @@ void Renderer::RenderGame(GameInfo game, unsigned int * pixelBuffer, unsigned in
 
 	if ((game.CaveTime - (game.Tick / 8)) > 0)
 		RenderNum(game.CaveTime - (game.Tick / 8), 28, 22, 3, 0, DATA_MAGICWALL, DATA_BOULDER, display);
+}
 
-
-
-	// render to pixelbuffer
+void Renderer::WriteToPixelBuffer(char display[CAVE_WIDTH][(INFO_HEIGHT + CAVE_HEIGHT)], unsigned int zoom, unsigned int* pixelBuffer)
+{
 	for (int y = 0; y < (INFO_HEIGHT + CAVE_HEIGHT); y++)
 	{
 		for (int x = 0; x < CAVE_WIDTH; x++)
 		{
 			int colors[3];
-			g.GetColors(display[x][y], _renderTick, colors);
 
+			colorRepo.GetColors(display[x][y], _renderTick, colors);
+
+			//kodowanie koloru
 			unsigned int col = (colors[0] << 16) + (colors[1] << 8) + colors[2];
+			//kwadrat ktory malujemy
+			unsigned int start = y * zoom * CAVE_WIDTH * zoom + x * zoom;
+			unsigned int end = start + zoom * zoom * CAVE_WIDTH;
 
-			unsigned int start = y*zoom*CAVE_WIDTH*zoom + x*zoom;
-			unsigned int end = start + zoom*zoom*CAVE_WIDTH;
-
-			for (unsigned int a = start; a < end; a += CAVE_WIDTH*zoom)
+			for (unsigned int a = start; a < end; a += CAVE_WIDTH * zoom)
 			{
 				for (unsigned int b = a; b < a + zoom; b++)
 				{
@@ -143,6 +150,25 @@ void Renderer::RenderGame(GameInfo game, unsigned int * pixelBuffer, unsigned in
 			}
 		}
 	}
+}
+
+void Renderer::RenderGame(GameInfo& game, PixelBuffer& pixelBuffer, unsigned int zoom)
+{
+	_renderTick++;
+
+	//w zasadzie to tylko wymazuje z danych to co nie ma byc widoczne (efekt szumu)
+	HandleUncover(game);
+
+	//tablica calego ekranu, jako ze nie ma tekstur tutaj zapisuje id przedmiotow ktore sie znajda na ekranie
+	char display[CAVE_WIDTH][(INFO_HEIGHT + CAVE_HEIGHT)];
+	CreateDisplay(display);
+
+	//cave:
+	WriteCavePart(game, display);
+	//info:
+	WriteInfoPart(game, display);
+
+	WriteToPixelBuffer(display, zoom, pixelBuffer.GetBuffer());
 }
 
 void Renderer::RenderNum(int number, int x, int y, int length, int pad, int typea, int typeb, char display[CAVE_WIDTH][(INFO_HEIGHT + CAVE_HEIGHT)])

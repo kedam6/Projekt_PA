@@ -29,7 +29,7 @@ void Game::Run()
 		{
 			engine.Process(&gameInfo);
 		}
-		renderer.RenderGame(gameInfo, engine.GetPixelBuffer().GetBuffer(), ZOOM);
+		renderer.RenderGame(gameInfo, engine.GetPixelBuffer(), ZOOM);
 	}
 	
 	engine.Close();
