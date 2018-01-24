@@ -47,7 +47,6 @@ PixelBuffer SdlUtils::SdlInit(int height, int width, const char* title, int fps)
 	pixelbuffer = new unsigned int[height*width];
 	PixelBuffer ret = PixelBuffer(pixelbuffer);
 
-
 	//SDLowe rzeczy
 	//screensaver na poczatku
 	SDL_EnableScreenSaver();

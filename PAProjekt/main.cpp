@@ -1,7 +1,6 @@
 #include "Game.h"
 #include "GameFactory.h"
 
-
 //z jakiegos powodu trzeba oddefiniowac main przez SDL
 #undef main
 
@@ -12,5 +11,5 @@ int main(int argv, char* args)
 
 	game.Run();
 
-	return 0;
+	return EXIT_SUCCESS;
 }

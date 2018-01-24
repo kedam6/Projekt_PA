@@ -517,3 +517,34 @@ void Engine::Process(GameInfo * game)
 
 	sdlUtils.SdlReleaseKeys();
 }
+
+void Engine::Close()
+{
+	sdlUtils.SdlClose();
+}
+
+GameInfo Engine::InitGame()
+{
+	//create buffer
+	PixelBuffer pixelBuffer = sdlUtils.SdlInit(CAVE_WIDTH * ZOOM, (INFO_HEIGHT + CAVE_HEIGHT) * ZOOM, "BD (based on Boulder Dash 2 from Commodore 64)", 60);
+	this->buffer = pixelBuffer;
+	//init game
+	GameInfo ret = GameInitInfo().InitGame(0, 0);
+
+	return ret;
+}
+
+bool Engine::HandleEvents()
+{
+	return sdlUtils.SdlHandleEvents((void*)buffer.GetBuffer());
+}
+
+bool Engine::LimitFps(int * limiter)
+{
+	return sdlUtils.SdlLimitFps(limiter);
+}
+
+PixelBuffer Engine::GetPixelBuffer()
+{
+	return buffer;
+}

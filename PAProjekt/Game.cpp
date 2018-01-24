@@ -4,9 +4,8 @@
 #include <time.h>
 
 
-Game::Game(SdlUtils utils, Engine engine, Renderer renderer)
+Game::Game(Engine engine, Renderer renderer)
 {
-	this->utils = utils;
 	this->engine = engine;
 	this->renderer = renderer;
 	this->gameLimiter = 0;
@@ -22,20 +21,16 @@ void Game::Run()
 	//start rng
 	srand(time(NULL));
 
-	//create buffer
-	PixelBuffer pixelBuffer = utils.SdlInit(CAVE_WIDTH * ZOOM, (INFO_HEIGHT + CAVE_HEIGHT) * ZOOM, "BD (based on Boulder Dash 2 from Commodore 64)", 60);
-	//init game
-	GameInfo gameInfo = GameInitInfo().InitGame(0, 0);
+	GameInfo gameInfo = engine.InitGame();
 
-	while(utils.SdlHandleEvents((void*)pixelBuffer.GetBuffer()))
+	while (engine.HandleEvents())
 	{
-		while (utils.SdlLimitFps(&gameLimiter))
+		while (engine.LimitFps(&gameLimiter))
 		{
 			engine.Process(&gameInfo);
 		}
-
-		renderer.RenderGame(gameInfo, pixelBuffer.GetBuffer(), ZOOM);
+		renderer.RenderGame(gameInfo, engine.GetPixelBuffer().GetBuffer(), ZOOM);
 	}
-
-	utils.SdlClose();
+	
+	engine.Close();
 }

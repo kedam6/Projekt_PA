@@ -6,13 +6,12 @@
 class Game
 {
 private:
-	SdlUtils utils;
 	Engine engine;
 	Renderer renderer;
 	int gameLimiter;
 
 public:
-	Game(SdlUtils utils, Engine engine, Renderer renderer);
+	Game(Engine engine, Renderer renderer);
 	~Game();
 
 	void Run();
