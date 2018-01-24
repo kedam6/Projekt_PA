@@ -1,5 +1,5 @@
 #include "Renderer.h"
-#include "Objects.h"
+#include "GameObjects.h"
 #include "GlobalValues.h"
 #include "Graphics.h"
 #include <random>
@@ -86,16 +86,16 @@ void Renderer::RenderGame(GameInfo game, unsigned int * pixelBuffer, unsigned in
 			int field = game.cavemap[x][y];
 
 			if (game.Tick < START_DELAY)
-				if (field == BD_INBOX)
+				if (field == DATA_INBOX)
 					if (game.Tick % 20 < 10)
-						field = BD_STEELWALL;
+						field = DATA_STEELWALL;
 
 
 			if (game.Tick < UNCOVER_LOOP)
 			{
 				if (game.covered[x][y])
 				{
-					field = BD_STEELWALL;
+					field = DATA_STEELWALL;
 				}
 			}
 
@@ -109,15 +109,15 @@ void Renderer::RenderGame(GameInfo game, unsigned int * pixelBuffer, unsigned in
 	{
 		for (int x = 0; x < CAVE_WIDTH; x++)
 		{
-			display[x][y] = BD_STEELWALL;
+			display[x][y] = DATA_STEELWALL;
 		}
 	}
 
 	if ((game.DiamondsRequired - game.DiamondsCollected) > 0)
-		RenderNum(game.DiamondsRequired - game.DiamondsCollected, 1, 22, 3, 0, BD_COLOR_PURPLE, BD_BOULDER, display);
+		RenderNum(game.DiamondsRequired - game.DiamondsCollected, 1, 22, 3, 0, DATA_COLOR_PURPLE, DATA_BOULDER, display);
 
 	if ((game.CaveTime - (game.Tick / 8)) > 0)
-		RenderNum(game.CaveTime - (game.Tick / 8), 28, 22, 3, 0, BD_MAGICWALL, BD_BOULDER, display);
+		RenderNum(game.CaveTime - (game.Tick / 8), 28, 22, 3, 0, DATA_MAGICWALL, DATA_BOULDER, display);
 
 
 

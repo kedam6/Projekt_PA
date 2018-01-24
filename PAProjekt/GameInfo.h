@@ -29,6 +29,5 @@ public:
 	int Intermission;
 	char covered[CAVE_WIDTH][CAVE_HEIGHT];
 	int cavemap[CAVE_WIDTH][CAVE_HEIGHT];
-	
 };
 

@@ -1,7 +1,7 @@
 #include "Graphics.h"
 #include "GameSupport.h"
 #include "Cave.h"
-#include "Objects.h"
+#include "GameObjects.h"
 #include "GameInfo.h"
 #include "CaveInfo.h"
 #include <random>
@@ -33,14 +33,14 @@ int Graphics::RenderField(int cave, int level, int field[CAVE_WIDTH][CAVE_HEIGHT
 
 	for (int x = 0; x < CAVE_WIDTH; x++) {
 		for (int y = 0; y < CAVE_HEIGHT; y++) {
-			field[x][y] = BD_STEELWALL;
+			field[x][y] = DATA_STEELWALL;
 		}
 	}
 
 	for (int y = 1; y < CAVE_HEIGHT - 1; y++) {
 		for (int x = 0; x < CAVE_WIDTH; x++) {
 			support.NextRandom(&RandSeed1, &RandSeed2);
-			int store = BD_DIRT;
+			int store = DATA_DIRT;
 			for (int caveDataaddIndex = 0; caveDataaddIndex < 4; caveDataaddIndex++) {
 				if (RandSeed1 < caveObj.caveData->RandomFill[caveDataaddIndex * 2 + 1]) {
 					store = caveObj.caveData->RandomFill[caveDataaddIndex * 2];
@@ -60,24 +60,24 @@ int Graphics::RenderField(int cave, int level, int field[CAVE_WIDTH][CAVE_HEIGHT
 
 		switch (type)
 		{
-		case BD_DRAW_LINE:
-		case BD_DRAW_FILLRECT:
+		case DATA_DRAW_LINE:
+		case DATA_DRAW_FILLRECT:
 			DrawFillRect(*(drawidx + offset + 1), *(drawidx + offset + 2), *(drawidx + offset + 3), *(drawidx + offset + 4), *(drawidx + offset + 5), field);
 			offset += 6;
 			break;
-		case BD_DRAW_FILLRECT2:
+		case DATA_DRAW_FILLRECT2:
 			DrawFillRect2(*(drawidx + offset + 1), *(drawidx + offset + 2), *(drawidx + offset + 3), *(drawidx + offset + 4), *(drawidx + offset + 5), *(drawidx + offset + 6), field);
 			offset += 7;
 			break;
-		case BD_DRAW_RECTANGLE:
+		case DATA_DRAW_RECTANGLE:
 			DrawRect(*(drawidx + offset + 1), *(drawidx + offset + 2), *(drawidx + offset + 3), *(drawidx + offset + 4), *(drawidx + offset + 5), field);
 			offset += 6;
 			break;
-		case BD_DRAW_POINT:
+		case DATA_DRAW_POINT:
 			DrawPoint(*(drawidx + offset + 1), *(drawidx + offset + 2), *(drawidx + offset + 3), field);
 			offset += 4;
 			break;
-		case BD_DRAW_RASTER:
+		case DATA_DRAW_RASTER:
 			DrawRaster(*(drawidx + offset + 1), *(drawidx + offset + 2), *(drawidx + offset + 3), *(drawidx + offset + 4), *(drawidx + offset + 5), *(drawidx + offset + 6), *(drawidx + offset + 7), field);
 			offset += 8;
 			break;
@@ -148,104 +148,104 @@ void Graphics::GetColors(int type, int tick, int * colors)
 
 	switch (type)
 	{
-	case BD_SLIME:
+	case DATA_SLIME:
 		tick = (rand() & 7);
 		colors[0] = 6;
 		colors[1] = 6;
 		colors[2] = 150 + (5 * sinlut32[tick & 63]);
 		break;
-	case BD_AMOEBA:
+	case DATA_AMOEBA:
 		tick = (rand() & 7);
 		colors[0] = 6;
 		colors[1] = 150 + (5 * sinlut32[tick & 63]);
 		colors[2] = 6;
 		break;
-	case BD_DIRT:
+	case DATA_DIRT:
 		colors[0] = 94;
 		colors[1] = 68;
 		colors[2] = 36;
 		break;
-	case BD_BOULDER:
-	case BD_BOULDERfall:
+	case DATA_BOULDER:
+	case DATA_BOULDER_FALL:
 		colors[0] = 17;
 		colors[1] = 99;
 		colors[2] = 90;
 		break;
-	case BD_OUTBOXactive:
+	case DATA_OUTBOX_ACTIVE:
 		colors[0] = 93 + (2 * sinlut64[tick & 63]);
 		colors[1] = 93 + (2 * sinlut64[tick & 63]);
 		colors[2] = 93 + (2 * sinlut64[tick & 63]);
 		break;
-	case BD_OUTBOX:
-	case BD_STEELWALL:
+	case DATA_OUTBOX:
+	case DATA_STEELWALL:
 		colors[0] = 93;
 		colors[1] = 93;
 		colors[2] = 93;
 		break;
-	case BD_WALL:
+	case DATA_WALL:
 		colors[0] = 126;
 		colors[1] = 126;
 		colors[2] = 126;
 		break;
-	case BD_MAGICWALL:
+	case DATA_MAGICWALL:
 		colors[0] = 146;
 		colors[1] = 146;
 		colors[2] = 146;
 		break;
-	case BD_MAGICWALLactive:
+	case DATA_MAGICWALL_ACTIVE:
 		colors[0] = 100 + (4 * sinlut64[tick & 63]);
 		colors[1] = 100 + (4 * sinlut64[tick & 63]);
 		colors[2] = 100 + (4 * sinlut64[tick & 63]);
 		break;
-	case BD_DIAMOND:
-	case BD_DIAMONDfall:
+	case DATA_DIAMOND:
+	case DATA_DIAMOND_FALL:
 		colors[0] = 86 + (2 * sinlut64[tick & 63]);
 		colors[1] = 6;
 		colors[2] = 86 + (2 * sinlut64[(tick + 5) & 63]);
 		break;
-	case BD_COLOR_PURPLE:
+	case DATA_COLOR_PURPLE:
 		colors[0] = 86 + 10;
 		colors[1] = 6;
 		colors[2] = 86 + 10;
 		break;
-	case BD_ROCKFORD:
-	case BD_ROCKFORDgrab:
+	case DATA_ROCKFORD:
+	case DATA_ROCKFORD_GRAB:
 		colors[0] = 158;
 		colors[1] = 90 + (5 * sinlut64[tick & 63]);
 		colors[2] = 53;
 		break;
-	case BD_FIREFLYr:
-	case BD_FIREFLYl:
-	case BD_FIREFLYt:
-	case BD_FIREFLYd:
+	case DATA_FIREFLY_RIGHT:
+	case DATA_FIREFLY_LEFT:
+	case DATA_FIREFLY_TOP:
+	case DATA_FIREFLY_DOWN:
 		colors[0] = 32 + (20 * sinlut32[tick & 31]);
 		colors[1] = 32 + (20 * sinlut32[tick & 31]);
 		colors[2] = 32 + (20 * sinlut32[tick & 31]);
 		break;
-	case BD_BUTTERFLYr:
-	case BD_BUTTERFLYl:
-	case BD_BUTTERFLYu:
-	case BD_BUTTERFLYd:
+	case DATA_BUTTERFLY_RIGHT:
+	case DATA_BUTTERFLY_LEFT:
+	case DATA_BUTTERFLY_UP:
+	case DATA_BUTTERFLY_DOWN:
 		colors[0] = 32 + (20 * sinlut32[tick & 15]);
 		colors[1] = 6;
 		colors[2] = 32 + (20 * sinlut32[tick & 15]);
 		break;
-	case BD_EXPLOSION1:
-	case BD_EXPLOSION2:
-	case BD_EXPLOSION3:
-	case BD_EXPLOSION4:
-	case BD_EXPLOSION5:
+	case DATA_EXPLOSION1:
+	case DATA_EXPLOSION2:
+	case DATA_EXPLOSION3:
+	case DATA_EXPLOSION4:
+	case DATA_EXPLOSION5:
 		colors[0] = 255;
-		colors[1] = ((BD_EXPLOSION5 - type) * 50);
+		colors[1] = ((DATA_EXPLOSION5 - type) * 50);
 		colors[2] = 0;
 		break;
-	case BD_DEXPLOSION1:
-	case BD_DEXPLOSION2:
-	case BD_DEXPLOSION3:
-	case BD_DEXPLOSION4:
-	case BD_DEXPLOSION5:
+	case DATA_DEXPLOSION1:
+	case DATA_DEXPLOSION2:
+	case DATA_DEXPLOSION3:
+	case DATA_DEXPLOSION4:
+	case DATA_DEXPLOSION5:
 		colors[0] = 255;
-		colors[1] = ((BD_DEXPLOSION5 - type) * 30);
+		colors[1] = ((DATA_DEXPLOSION5 - type) * 30);
 		colors[2] = 50;
 		break;
 	}

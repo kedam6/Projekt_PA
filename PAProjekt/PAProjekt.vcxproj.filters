@@ -52,6 +52,12 @@
     <Filter Include="Source Files\Models">
       <UniqueIdentifier>{230ada0a-77f1-4a00-b89d-012da3d18dd7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Inputs">
+      <UniqueIdentifier>{cb7b19e1-a679-426f-a281-fd6990dc8b87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{0dea9d0c-ca30-4231-92ef-85e9e3608bcd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -63,16 +69,7 @@
     <ClCompile Include="GameSupport.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PositionChecker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameInitInfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameEffects.cpp">
@@ -99,6 +96,18 @@
     <ClCompile Include="GameInfo.cpp">
       <Filter>Source Files\Models</Filter>
     </ClCompile>
+    <ClCompile Include="GameInfoFactory.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionChecker.cpp">
+      <Filter>Source Files\Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="lib\SDL2.dll">
@@ -121,15 +130,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameSupport.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Graphics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PositionChecker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CaveInfo.h">
@@ -168,8 +168,20 @@
     <ClInclude Include="GameInfo.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="Objects.h">
+    <ClInclude Include="GameInfoFactory.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjects.h">
       <Filter>Header Files\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionChecker.h">
+      <Filter>Header Files\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Header Files\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

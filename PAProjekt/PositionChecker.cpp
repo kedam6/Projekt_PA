@@ -1,5 +1,5 @@
 #include "PositionChecker.h"
-#include "Objects.h"
+#include "GameObjects.h"
 
 
 PositionChecker::PositionChecker()
@@ -13,65 +13,65 @@ PositionChecker::~PositionChecker()
 
 int PositionChecker::ButterflyLeft(int butterfly)
 {
-	if (butterfly == BD_BUTTERFLYr) return BD_BUTTERFLYd;
-	if (butterfly == BD_BUTTERFLYu) return BD_BUTTERFLYr;
-	if (butterfly == BD_BUTTERFLYl) return BD_BUTTERFLYu;
-	return BD_BUTTERFLYl;
+	if (butterfly == DATA_BUTTERFLY_RIGHT) return DATA_BUTTERFLY_DOWN;
+	if (butterfly == DATA_BUTTERFLY_UP) return DATA_BUTTERFLY_RIGHT;
+	if (butterfly == DATA_BUTTERFLY_LEFT) return DATA_BUTTERFLY_UP;
+	return DATA_BUTTERFLY_LEFT;
 }
 
 int PositionChecker::ButterflyRight(int butterfly)
 {
-	if (butterfly == BD_BUTTERFLYr) return BD_BUTTERFLYu;
-	if (butterfly == BD_BUTTERFLYd) return BD_BUTTERFLYr;
-	if (butterfly == BD_BUTTERFLYl) return BD_BUTTERFLYd;
-	return BD_BUTTERFLYl;
+	if (butterfly == DATA_BUTTERFLY_RIGHT) return DATA_BUTTERFLY_UP;
+	if (butterfly == DATA_BUTTERFLY_DOWN) return DATA_BUTTERFLY_RIGHT;
+	if (butterfly == DATA_BUTTERFLY_LEFT) return DATA_BUTTERFLY_DOWN;
+	return DATA_BUTTERFLY_LEFT;
 }
 
 int PositionChecker::ButterflyX(int butterfly)
 {
-	if (butterfly == BD_BUTTERFLYr) return 1;
-	if (butterfly == BD_BUTTERFLYd) return 0;
-	if (butterfly == BD_BUTTERFLYl) return -1;
+	if (butterfly == DATA_BUTTERFLY_RIGHT) return 1;
+	if (butterfly == DATA_BUTTERFLY_DOWN) return 0;
+	if (butterfly == DATA_BUTTERFLY_LEFT) return -1;
 	return 0;
 }
 
 int PositionChecker::ButterflyY(int butterfly)
 {
-	if (butterfly == BD_BUTTERFLYr) return 0;
-	if (butterfly == BD_BUTTERFLYd) return 1;
-	if (butterfly == BD_BUTTERFLYl) return 0;
+	if (butterfly == DATA_BUTTERFLY_RIGHT) return 0;
+	if (butterfly == DATA_BUTTERFLY_DOWN) return 1;
+	if (butterfly == DATA_BUTTERFLY_LEFT) return 0;
 	return -1;
 }
 
 int PositionChecker::FireflyLeft(int firefly)
 {
-	if (firefly == BD_FIREFLYr) return BD_FIREFLYt;
-	if (firefly == BD_FIREFLYt) return BD_FIREFLYl;
-	if (firefly == BD_FIREFLYl) return BD_FIREFLYd;
-	return BD_FIREFLYr;
+	if (firefly == DATA_FIREFLY_RIGHT) return DATA_FIREFLY_TOP;
+	if (firefly == DATA_FIREFLY_TOP) return DATA_FIREFLY_LEFT;
+	if (firefly == DATA_FIREFLY_LEFT) return DATA_FIREFLY_DOWN;
+	return DATA_FIREFLY_RIGHT;
 }
 
 int PositionChecker::FireflyRight(int firefly)
 {
-	if (firefly == BD_FIREFLYr) return BD_FIREFLYd;
-	if (firefly == BD_FIREFLYd) return BD_FIREFLYl;
-	if (firefly == BD_FIREFLYl) return BD_FIREFLYt;
-	return BD_FIREFLYr;
+	if (firefly == DATA_FIREFLY_RIGHT) return DATA_FIREFLY_DOWN;
+	if (firefly == DATA_FIREFLY_DOWN) return DATA_FIREFLY_LEFT;
+	if (firefly == DATA_FIREFLY_LEFT) return DATA_FIREFLY_TOP;
+	return DATA_FIREFLY_RIGHT;
 }
 
 int PositionChecker::FireflyX(int firefly)
 {
-	if (firefly == BD_FIREFLYr) return 1;
-	if (firefly == BD_FIREFLYd) return 0;
-	if (firefly == BD_FIREFLYl) return -1;
+	if (firefly == DATA_FIREFLY_RIGHT) return 1;
+	if (firefly == DATA_FIREFLY_DOWN) return 0;
+	if (firefly == DATA_FIREFLY_LEFT) return -1;
 	return 0;
 }
 
 int PositionChecker::FireflyY(int firefly)
 {
-	if (firefly == BD_FIREFLYr) return 0;
-	if (firefly == BD_FIREFLYd) return 1;
-	if (firefly == BD_FIREFLYl) return 0;
+	if (firefly == DATA_FIREFLY_RIGHT) return 0;
+	if (firefly == DATA_FIREFLY_DOWN) return 1;
+	if (firefly == DATA_FIREFLY_LEFT) return 0;
 	return -1;
 }
 

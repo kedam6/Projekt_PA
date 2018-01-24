@@ -124,6 +124,7 @@
     <ClCompile Include="GameEffects.cpp" />
     <ClCompile Include="GameFactory.cpp" />
     <ClCompile Include="GameInfo.cpp" />
+    <ClCompile Include="GameInfoFactory.cpp" />
     <ClCompile Include="GameInitInfo.cpp" />
     <ClCompile Include="GameSupport.cpp" />
     <ClCompile Include="GlobalInstances.cpp" />
@@ -152,13 +153,14 @@
     <ClInclude Include="GameEffects.h" />
     <ClInclude Include="GameFactory.h" />
     <ClInclude Include="GameInfo.h" />
+    <ClInclude Include="GameInfoFactory.h" />
     <ClInclude Include="GameInitInfo.h" />
     <ClInclude Include="GameSupport.h" />
     <ClInclude Include="GlobalInstances.h" />
     <ClInclude Include="GlobalValues.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="IFactory.h" />
-    <ClInclude Include="Objects.h" />
+    <ClInclude Include="GameObjects.h" />
     <ClInclude Include="PixelBuffer.h" />
     <ClInclude Include="PositionChecker.h" />
     <ClInclude Include="Renderer.h" />

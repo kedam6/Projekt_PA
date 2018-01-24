@@ -1,6 +1,6 @@
 #include "Engine.h"
 #include "GlobalValues.h"
-#include "Objects.h"
+#include "GameObjects.h"
 #include "GameInitInfo.h"
 #include "PositionChecker.h"
 #include <stdlib.h>
@@ -117,76 +117,76 @@ void Engine::Process(GameInfo * game)
 			int fall = 1;
 			switch (curr_type)
 			{
-			case BD_AMOEBA:
+			case DATA_AMOEBA:
 				if (game->AmoebaSpace == 0)
 				{
-					new_cavemap[x][y] = BD_DIAMOND;
+					new_cavemap[x][y] = DATA_DIAMOND;
 				}
 				else
 					for (int dir = 1; dir<5; dir++)
 					{
 						if (
-							(new_cavemap[x + positionChecker.MoveX(dir)][y + positionChecker.MoveY(dir)] == BD_SPACE) ||
-							(new_cavemap[x + positionChecker.MoveX(dir)][y + positionChecker.MoveY(dir)] == BD_DIRT)
+							(new_cavemap[x + positionChecker.MoveX(dir)][y + positionChecker.MoveY(dir)] == DATA_SPACE) ||
+							(new_cavemap[x + positionChecker.MoveX(dir)][y + positionChecker.MoveY(dir)] == DATA_DIRT)
 							)
 						{
 							amoeba_possible++;
 							if (((game->AmoebaTime * 8) < tick) && (rand() % 15 == 0))
 							{
-								new_cavemap[x + positionChecker.MoveX(dir)][y + positionChecker.MoveY(dir)] = BD_AMOEBA;
+								new_cavemap[x + positionChecker.MoveX(dir)][y + positionChecker.MoveY(dir)] = DATA_AMOEBA;
 							}
 							else if ((game->Tick>START_DELAY) && (rand() % 100 == 0))
 							{
-								new_cavemap[x + positionChecker.MoveX(dir)][y + positionChecker.MoveY(dir)] = BD_AMOEBA;
+								new_cavemap[x + positionChecker.MoveX(dir)][y + positionChecker.MoveY(dir)] = DATA_AMOEBA;
 							}
 						}
 					}
 				break;
-			case BD_OUTBOX:
+			case DATA_OUTBOX:
 				if (game->DiamondsCollected >= game->DiamondsRequired)
 				{
-					new_cavemap[x][y] = BD_OUTBOXactive;
+					new_cavemap[x][y] = DATA_OUTBOX_ACTIVE;
 				}
 				break;
-			case BD_EXPLOSION1:
-			case BD_EXPLOSION2:
-			case BD_EXPLOSION3:
-			case BD_EXPLOSION4:
+			case DATA_EXPLOSION1:
+			case DATA_EXPLOSION2:
+			case DATA_EXPLOSION3:
+			case DATA_EXPLOSION4:
 				if (expl_tick == 0)
 				{
 					new_cavemap[x][y] = curr_type + 1;
 				}
 				break;
-			case BD_EXPLOSION5:
+			case DATA_EXPLOSION5:
 				if (expl_tick == 0)
 				{
-					new_cavemap[x][y] = BD_SPACE;
+					new_cavemap[x][y] = DATA_SPACE;
 				}
 				break;
-			case BD_DEXPLOSION1:
-			case BD_DEXPLOSION2:
-			case BD_DEXPLOSION3:
-			case BD_DEXPLOSION4:
+			case DATA_DEXPLOSION1:
+			case DATA_DEXPLOSION2:
+			case DATA_DEXPLOSION3:
+			case DATA_DEXPLOSION4:
 				if (expl_tick == 0)
 				{
 					new_cavemap[x][y] = curr_type + 1;
 				}
 				break;
-			case BD_DEXPLOSION5:
+			case DATA_DEXPLOSION5:
 				if (expl_tick == 0)
 				{
-					new_cavemap[x][y] = BD_DIAMOND;
+					new_cavemap[x][y] = DATA_DIAMOND;
 				}
 				break;
-			case BD_INBOX:
+			case DATA_INBOX:
 				valid_rockford = 1;
 				game->Player_X = x;
 				if (game->Tick == START_DELAY)
-					new_cavemap[x][y] = BD_ROCKFORD;
+					new_cavemap[x][y] = DATA_ROCKFORD;
 
 				break;
-			case BD_ROCKFORDgrab:
-			case BD_ROCKFORD:
+			case DATA_ROCKFORD_GRAB:
+			case DATA_ROCKFORD:
 				valid_rockford = 1;
 				if (move_tick == 0)
 				{
@@ -226,192 +226,192 @@ void Engine::Process(GameInfo * game)
 					if (direction != 0)
 					{
 						if (
-							(new_cavemap[x + positionChecker.MoveX(direction)][y + positionChecker.MoveY(direction)] == BD_SPACE) ||
-							(new_cavemap[x + positionChecker.MoveX(direction)][y + positionChecker.MoveY(direction)] == BD_DIRT)
+							(new_cavemap[x + positionChecker.MoveX(direction)][y + positionChecker.MoveY(direction)] == DATA_SPACE) ||
+							(new_cavemap[x + positionChecker.MoveX(direction)][y + positionChecker.MoveY(direction)] == DATA_DIRT)
 							)
 						{
-							new_cavemap[x + positionChecker.MoveX(direction)][y + positionChecker.MoveY(direction)] = BD_ROCKFORD;
-							new_cavemap[x][y] = BD_SPACE;
+							new_cavemap[x + positionChecker.MoveX(direction)][y + positionChecker.MoveY(direction)] = DATA_ROCKFORD;
+							new_cavemap[x][y] = DATA_SPACE;
 							game->Player_X = x + positionChecker.MoveX(direction);
 						}
 						if (
-							new_cavemap[x + positionChecker.MoveX(direction)][y + positionChecker.MoveY(direction)] == BD_OUTBOXactive
+							new_cavemap[x + positionChecker.MoveX(direction)][y + positionChecker.MoveY(direction)] == DATA_OUTBOX_ACTIVE
 							)
 						{
-							new_cavemap[x + positionChecker.MoveX(direction)][y + positionChecker.MoveY(direction)] = BD_ROCKFORD;
-							new_cavemap[x][y] = BD_SPACE;
+							new_cavemap[x + positionChecker.MoveX(direction)][y + positionChecker.MoveY(direction)] = DATA_ROCKFORD;
+							new_cavemap[x][y] = DATA_SPACE;
 							game->Player_X = x + positionChecker.MoveX(direction);
 							game->Won = 1;
 						}
 						else if (
-							(new_cavemap[x + positionChecker.MoveX(direction)][y + positionChecker.MoveY(direction)] == BD_DIAMOND) ||
-							(new_cavemap[x + positionChecker.MoveX(direction)][y + positionChecker.MoveY(direction)] == BD_DIAMONDfall)
+							(new_cavemap[x + positionChecker.MoveX(direction)][y + positionChecker.MoveY(direction)] == DATA_DIAMOND) ||
+							(new_cavemap[x + positionChecker.MoveX(direction)][y + positionChecker.MoveY(direction)] == DATA_DIAMOND_FALL)
 							)
 						{
-							new_cavemap[x + positionChecker.MoveX(direction)][y + positionChecker.MoveY(direction)] = BD_ROCKFORD;
-							new_cavemap[x][y] = BD_SPACE;
+							new_cavemap[x + positionChecker.MoveX(direction)][y + positionChecker.MoveY(direction)] = DATA_ROCKFORD;
+							new_cavemap[x][y] = DATA_SPACE;
 							game->Player_X = x + positionChecker.MoveX(direction);
 							game->DiamondsCollected++;
 						}
 						else if (
-							(new_cavemap[x + positionChecker.MoveX(direction)][y] == BD_BOULDER) &&
+							(new_cavemap[x + positionChecker.MoveX(direction)][y] == DATA_BOULDER) &&
 							(positionChecker.MoveY(direction) == 0)
 							)
 						{
-							if (curr_type == BD_ROCKFORDgrab)
+							if (curr_type == DATA_ROCKFORD_GRAB)
 							{
-								if (new_cavemap[x + positionChecker.MoveX(direction) * 2][y] == BD_SPACE)
+								if (new_cavemap[x + positionChecker.MoveX(direction) * 2][y] == DATA_SPACE)
 								{
-									new_cavemap[x + positionChecker.MoveX(direction) * 2][y] = BD_BOULDER;
-									new_cavemap[x + positionChecker.MoveX(direction)][y] = BD_ROCKFORD;
+									new_cavemap[x + positionChecker.MoveX(direction) * 2][y] = DATA_BOULDER;
+									new_cavemap[x + positionChecker.MoveX(direction)][y] = DATA_ROCKFORD;
 									game->Player_X = x + positionChecker.MoveX(direction);
-									new_cavemap[x][y] = BD_SPACE;
+									new_cavemap[x][y] = DATA_SPACE;
 								}
 							}
 							else
 							{
-								new_cavemap[x][y] = BD_ROCKFORDgrab;
+								new_cavemap[x][y] = DATA_ROCKFORD_GRAB;
 							}
 						}
 
 					}
 				}
 				break;
-			case BD_BOULDERfall:
-			case BD_DIAMONDfall:
+			case DATA_DIAMOND_FALL:
+			case DATA_BOULDER_FALL:
 				if (fall_tick == 0)
 				{
 					if (
-						(new_cavemap[x][y + 1] == BD_FIREFLYt) ||
-						(new_cavemap[x][y + 1] == BD_FIREFLYl) ||
-						(new_cavemap[x][y + 1] == BD_FIREFLYr) ||
-						(new_cavemap[x][y + 1] == BD_FIREFLYd) ||
-						(new_cavemap[x][y + 1] == BD_ROCKFORD)
+						(new_cavemap[x][y + 1] == DATA_FIREFLY_TOP) ||
+						(new_cavemap[x][y + 1] == DATA_FIREFLY_LEFT) ||
+						(new_cavemap[x][y + 1] == DATA_FIREFLY_RIGHT) ||
+						(new_cavemap[x][y + 1] == DATA_FIREFLY_DOWN) ||
+						(new_cavemap[x][y + 1] == DATA_ROCKFORD)
 						)
 					{
-						if (new_cavemap[x][y + 1] == BD_ROCKFORD)
+						if (new_cavemap[x][y + 1] == DATA_ROCKFORD)
 							game->Lost = 1;
 						gameEffects.Explode(new_cavemap, x, y + 1);
 
 					}
 					else if (
-						(curr_type == BD_BOULDERfall) &&
-						(new_cavemap[x][y + 1] == BD_MAGICWALL)
+						(curr_type == DATA_BOULDER_FALL) &&
+						(new_cavemap[x][y + 1] == DATA_MAGICWALL)
 						)
 					{
 					}
 					else if (
-						(new_cavemap[x][y + 1] != BD_SPACE) &&
-						(new_cavemap[x][y + 1] != BD_MAGICWALLactive)
+						(new_cavemap[x][y + 1] != DATA_SPACE) &&
+						(new_cavemap[x][y + 1] != DATA_MAGICWALL_ACTIVE)
 						)
 					{
 						new_cavemap[x][y] -= 1;
 					}
 					fall = 0;
 				}
-			case BD_BOULDER:
-			case BD_DIAMOND:
+			case DATA_BOULDER:
+			case DATA_DIAMOND:
 				if (fall_tick == 0)
 				{
 					if (
-						((new_cavemap[x][y] == BD_BOULDER) || (new_cavemap[x][y] == BD_DIAMOND)) &&
-						(new_cavemap[x][y + 1] == BD_SPACE)
+						((new_cavemap[x][y] == DATA_BOULDER) || (new_cavemap[x][y] == DATA_DIAMOND)) &&
+						(new_cavemap[x][y + 1] == DATA_SPACE)
 						)
 					{
 						new_cavemap[x][y + 1] = curr_type + fall;
-						new_cavemap[x][y] = BD_SPACE;
+						new_cavemap[x][y] = DATA_SPACE;
 					}
 					else if (
-						new_cavemap[x][y + 1] == BD_SPACE
+						new_cavemap[x][y + 1] == DATA_SPACE
 						)
 					{
-						new_cavemap[x][y] = BD_SPACE;
+						new_cavemap[x][y] = DATA_SPACE;
 						new_cavemap[x][y + 1] = curr_type + fall;
 					}
 					else if (
-						((new_cavemap[x][y + 1] == BD_BOULDER) || (new_cavemap[x][y + 1] == BD_DIAMOND)) &&
-						(new_cavemap[x - 1][y + 1] == BD_SPACE) &&
-						(new_cavemap[x - 1][y] == BD_SPACE)
+						((new_cavemap[x][y + 1] == DATA_BOULDER) || (new_cavemap[x][y + 1] == DATA_DIAMOND)) &&
+						(new_cavemap[x - 1][y + 1] == DATA_SPACE) &&
+						(new_cavemap[x - 1][y] == DATA_SPACE)
 
 						)
 					{
 						new_cavemap[x - 1][y] = curr_type + fall;
-						new_cavemap[x][y] = BD_SPACE;
+						new_cavemap[x][y] = DATA_SPACE;
 					}
 					else if (
-						((new_cavemap[x][y + 1] == BD_BOULDER) || (new_cavemap[x][y + 1] == BD_DIAMOND)) &&
-						(new_cavemap[x + 1][y + 1] == BD_SPACE) &&
-						(new_cavemap[x + 1][y] == BD_SPACE)
+						((new_cavemap[x][y + 1] == DATA_BOULDER) || (new_cavemap[x][y + 1] == DATA_DIAMOND)) &&
+						(new_cavemap[x + 1][y + 1] == DATA_SPACE) &&
+						(new_cavemap[x + 1][y] == DATA_SPACE)
 
 						)
 					{
 						new_cavemap[x + 1][y] = curr_type + fall;
-						new_cavemap[x][y] = BD_SPACE;
+						new_cavemap[x][y] = DATA_SPACE;
 					}
 					else if (
-						(new_cavemap[x][y + 1] == BD_MAGICWALL) &&
-						(new_cavemap[x][y] == BD_BOULDERfall)
+						(new_cavemap[x][y + 1] == DATA_MAGICWALL) &&
+						(new_cavemap[x][y] == DATA_BOULDER_FALL)
 						)
 					{
 						game->MagicWallActive = 1;
 					}
 					else if (
-						(new_cavemap[x][y + 1] == BD_MAGICWALLactive) &&
-						((new_cavemap[x][y] == BD_DIAMONDfall) ||
-						(new_cavemap[x][y] == BD_BOULDERfall)) &&
-							(new_cavemap[x][y + 2] == BD_SPACE)
+						(new_cavemap[x][y + 1] == DATA_MAGICWALL_ACTIVE) &&
+						((new_cavemap[x][y] == DATA_DIAMOND_FALL) ||
+						(new_cavemap[x][y] == DATA_BOULDER_FALL)) &&
+							(new_cavemap[x][y + 2] == DATA_SPACE)
 						)
 					{
-						new_cavemap[x][y + 2] = BD_DIAMONDfall;
-						new_cavemap[x][y] = BD_SPACE;
+						new_cavemap[x][y + 2] = DATA_DIAMOND_FALL;
+						new_cavemap[x][y] = DATA_SPACE;
 					}
 					else if (
-						(new_cavemap[x][y + 1] == BD_MAGICWALLactive) &&
-						((new_cavemap[x][y] == BD_DIAMONDfall) ||
-						(new_cavemap[x][y] == BD_BOULDERfall)) &&
-							(new_cavemap[x][y + 2] != BD_SPACE)
+						(new_cavemap[x][y + 1] == DATA_MAGICWALL_ACTIVE) &&
+						((new_cavemap[x][y] == DATA_DIAMOND_FALL) ||
+						(new_cavemap[x][y] == DATA_BOULDER_FALL)) &&
+							(new_cavemap[x][y + 2] != DATA_SPACE)
 						)
 					{
-						new_cavemap[x][y] = BD_SPACE;
+						new_cavemap[x][y] = DATA_SPACE;
 					}
 					else if (
-						(new_cavemap[x][y + 1] == BD_SLIME) &&
-						(new_cavemap[x][y] == BD_DIAMOND) &&
-						(new_cavemap[x][y + 2] == BD_SPACE)
+						(new_cavemap[x][y + 1] == DATA_SLIME) &&
+						(new_cavemap[x][y] == DATA_DIAMOND) &&
+						(new_cavemap[x][y + 2] == DATA_SPACE)
 						)
 					{
 						support.NextRandom(&game->SlimeSeed1, &game->SlimeSeed2);
 						if (game->SlimeSeed1 < 10)
 						{
-							new_cavemap[x][y + 2] = BD_DIAMONDfall;
-							new_cavemap[x][y] = BD_SPACE;
+							new_cavemap[x][y + 2] = DATA_DIAMOND_FALL;
+							new_cavemap[x][y] = DATA_SPACE;
 						}
 					}
 					else if (
-						(new_cavemap[x][y + 1] == BD_SLIME) &&
-						(new_cavemap[x][y] == BD_BOULDER) &&
-						(new_cavemap[x][y + 2] == BD_SPACE)
+						(new_cavemap[x][y + 1] == DATA_SLIME) &&
+						(new_cavemap[x][y] == DATA_BOULDER) &&
+						(new_cavemap[x][y + 2] == DATA_SPACE)
 						)
 					{
 						support.NextRandom(&game->SlimeSeed1, &game->SlimeSeed2);
 						if (game->SlimeSeed1 < 10)
 						{
-							new_cavemap[x][y + 2] = BD_BOULDERfall;
-							new_cavemap[x][y] = BD_SPACE;
+							new_cavemap[x][y + 2] = DATA_BOULDER_FALL;
+							new_cavemap[x][y] = DATA_SPACE;
 						}
 					}
 				}
 				break;
-			case BD_MAGICWALL:
+			case DATA_MAGICWALL:
 				if (game->MagicWallActive == 1)
 				{
-					new_cavemap[x][y] = BD_MAGICWALLactive;
+					new_cavemap[x][y] = DATA_MAGICWALL_ACTIVE;
 				}
 				break;
-			case BD_FIREFLYr:
-			case BD_FIREFLYl:
-			case BD_FIREFLYt:
-			case BD_FIREFLYd:
+			case DATA_FIREFLY_RIGHT:
+			case DATA_FIREFLY_LEFT:
+			case DATA_FIREFLY_TOP:
+			case DATA_FIREFLY_DOWN:
 				if (move_tick == 0)
 				{
 					int dir = positionChecker.FireflyLeft(curr_type);
@@ -419,30 +419,30 @@ void Engine::Process(GameInfo * game)
 					for (int di = 0; di<4; di++)
 					{
 						if (
-							(new_cavemap[x + positionChecker.MoveX(di)][y + positionChecker.MoveY(di)] == BD_ROCKFORD) ||
-							(new_cavemap[x + positionChecker.MoveX(di)][y + positionChecker.MoveY(di)] == BD_ROCKFORDgrab)
+							(new_cavemap[x + positionChecker.MoveX(di)][y + positionChecker.MoveY(di)] == DATA_ROCKFORD) ||
+							(new_cavemap[x + positionChecker.MoveX(di)][y + positionChecker.MoveY(di)] == DATA_ROCKFORD_GRAB)
 							)
 						{
 							gameEffects.Explode(new_cavemap, x, y);
 							game->Lost = 1;
 						}
-						if (new_cavemap[x + positionChecker.MoveX(di)][y + positionChecker.MoveY(di)] == BD_AMOEBA)
+						if (new_cavemap[x + positionChecker.MoveX(di)][y + positionChecker.MoveY(di)] == DATA_AMOEBA)
 						{
 							gameEffects.Explode(new_cavemap, x, y);
 						}
 					}
 
-					if (new_cavemap[x][y] != BD_EXPLOSION1)
+					if (new_cavemap[x][y] != DATA_EXPLOSION1)
 					{
-						if (new_cavemap[x + positionChecker.FireflyX(dir)][y + positionChecker.FireflyY(dir)] == BD_SPACE)
+						if (new_cavemap[x + positionChecker.FireflyX(dir)][y + positionChecker.FireflyY(dir)] == DATA_SPACE)
 						{
 							new_cavemap[x + positionChecker.FireflyX(dir)][y + positionChecker.FireflyY(dir)] = dir;
-							new_cavemap[x][y] = BD_SPACE;
+							new_cavemap[x][y] = DATA_SPACE;
 						}
-						else if (new_cavemap[x + positionChecker.FireflyX(curr_type)][y + positionChecker.FireflyY(curr_type)] == BD_SPACE)
+						else if (new_cavemap[x + positionChecker.FireflyX(curr_type)][y + positionChecker.FireflyY(curr_type)] == DATA_SPACE)
 						{
 							new_cavemap[x + positionChecker.FireflyX(curr_type)][y + positionChecker.FireflyY(curr_type)] = curr_type;
-							new_cavemap[x][y] = BD_SPACE;
+							new_cavemap[x][y] = DATA_SPACE;
 						}
 						else
 						{
@@ -452,10 +452,10 @@ void Engine::Process(GameInfo * game)
 				}
 				break;
 				//there must still be a bug, oberserved a resting diamond on top a freestanding boulder
-			case BD_BUTTERFLYr:
-			case BD_BUTTERFLYl:
-			case BD_BUTTERFLYu:
-			case BD_BUTTERFLYd:
+			case DATA_BUTTERFLY_RIGHT:
+			case DATA_BUTTERFLY_LEFT:
+			case DATA_BUTTERFLY_UP:
+			case DATA_BUTTERFLY_DOWN:
 				if (move_tick == 0)
 				{
 					int dir = positionChecker.ButterflyLeft(curr_type);
@@ -463,30 +463,30 @@ void Engine::Process(GameInfo * game)
 					for (int di = 0; di<4; di++)
 					{
 						if (
-							(new_cavemap[x + positionChecker.MoveX(di)][y + positionChecker.MoveY(di)] == BD_ROCKFORD) ||
-							(new_cavemap[x + positionChecker.MoveX(di)][y + positionChecker.MoveY(di)] == BD_ROCKFORDgrab)
+							(new_cavemap[x + positionChecker.MoveX(di)][y + positionChecker.MoveY(di)] == DATA_ROCKFORD) ||
+							(new_cavemap[x + positionChecker.MoveX(di)][y + positionChecker.MoveY(di)] == DATA_ROCKFORD_GRAB)
 							)
 						{
 							gameEffects.Dexplode(new_cavemap, x, y);
 							game->Lost = 1;
 						}
-						if (new_cavemap[x + positionChecker.MoveX(di)][y + positionChecker.MoveY(di)] == BD_AMOEBA)
+						if (new_cavemap[x + positionChecker.MoveX(di)][y + positionChecker.MoveY(di)] == DATA_AMOEBA)
 						{
 							gameEffects.Dexplode(new_cavemap, x, y);
 						}
 					}
 
-					if (new_cavemap[x][y] != BD_DEXPLOSION1)
+					if (new_cavemap[x][y] != DATA_DEXPLOSION1)
 					{
-						if (new_cavemap[x + positionChecker.ButterflyX(dir)][y + positionChecker.ButterflyY(dir)] == BD_SPACE)
+						if (new_cavemap[x + positionChecker.ButterflyX(dir)][y + positionChecker.ButterflyY(dir)] == DATA_SPACE)
 						{
 							new_cavemap[x + positionChecker.ButterflyX(dir)][y + positionChecker.ButterflyY(dir)] = dir;
-							new_cavemap[x][y] = BD_SPACE;
+							new_cavemap[x][y] = DATA_SPACE;
 						}
-						else if (new_cavemap[x + positionChecker.ButterflyX(curr_type)][y + positionChecker.ButterflyY(curr_type)] == BD_SPACE)
+						else if (new_cavemap[x + positionChecker.ButterflyX(curr_type)][y + positionChecker.ButterflyY(curr_type)] == DATA_SPACE)
 						{
 							new_cavemap[x + positionChecker.ButterflyX(curr_type)][y + positionChecker.ButterflyY(curr_type)] = curr_type;
-							new_cavemap[x][y] = BD_SPACE;
+							new_cavemap[x][y] = DATA_SPACE;
 						}
 						else
 						{
