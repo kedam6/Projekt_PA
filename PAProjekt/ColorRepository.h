@@ -8,7 +8,7 @@ using namespace std;
 class ColorRepository
 {
 private:
-	map<int, void(int*, int) const, greater_equal<int>> colorLUT;
+	//map<int, void(int*, int) const, greater_equal<int>> colorLUT;
 public:
 	ColorRepository();
 	~ColorRepository();

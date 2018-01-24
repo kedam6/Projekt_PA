@@ -9,8 +9,8 @@ class LookupTable
 private:
 	vector<T> coll;
 public:
-	LookupTable() = 0;
-	~LookupTable() = 0;
+	//LookupTable() = 0;
+	//~LookupTable() = 0;
 	
 	T Get(U index) = 0;
 };
