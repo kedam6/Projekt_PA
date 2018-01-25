@@ -37,9 +37,9 @@ private:
 	SdlUtils sdlUtils;
 	StageCreator stageCreator;
 	ColorRepository colorRepo;
-	//CaveFactory caveFactory;
-	//GameFactory gameFactory;
-	//GameInfoFactory gameInfoFactory;
+	CaveFactory caveFactory;
+	GameFactory gameFactory;
+	GameInfoFactory gameInfoFactory;
 	InputHandler inputHandler;
 	KeyMapper keyMapper;
 	FpsLimitter fpsLimit;
@@ -59,9 +59,9 @@ public:
 		keyMapper = KeyMapper();
 		colorRepo = ColorRepository();
 		fpsLimit = FpsLimitter();
-		//caveFactory = CaveFactory();
-		//gameFactory = GameFactory();
-		//gameInfoFactory = GameInfoFactory();
+		caveFactory = CaveFactory();
+
+		gameInfoFactory = GameInfoFactory();
 		inputHandler = InputHandler(keyMapper);
 		sdlUtils = SdlUtils(inputHandler, fpsLimit);
 		renderer = Renderer(colorRepo);
@@ -72,6 +72,7 @@ public:
 		initializer = GameInitInfo(graphics, renderer, posChecker, gameEffects, support, noiseMaker, stageCreator);
 		gameManager = GameManager(sdlUtils, initializer, renderer, posChecker, graphics, gameEffects, support, actionHandler);
 		engine = Engine(sdlUtils, initializer, renderer, posChecker, graphics, gameEffects, support, gameManager);
+		gameFactory = GameFactory(engine, renderer);
 	}
 	~GlobalInstances();
 

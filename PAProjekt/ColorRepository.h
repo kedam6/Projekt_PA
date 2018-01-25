@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class ColorRepository
+class ColorRepository// : public IRepository
 {
 private:
 	map<int, Color> colorLUT;
