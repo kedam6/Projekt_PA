@@ -12,9 +12,6 @@ MineralAction::MineralAction(GameSupport support)
 }
 
 
-MineralAction::~MineralAction()
-{
-}
 
 void MineralAction::PerformAction(GameInfo * game, int cave[CAVE_WIDTH][CAVE_HEIGHT], ActionContext & context)
 {

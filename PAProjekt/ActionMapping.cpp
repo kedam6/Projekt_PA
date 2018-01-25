@@ -1,17 +1,4 @@
 #include "ActionMapping.h"
-#include "BlankAction.h"
-#include "AmoebaAction.h"
-#include "DexplosionAction.h"
-#include "EnemyAction.h"
-#include "ExplosionAction.h"
-#include "FallingAction.h"
-#include "InboxAction.h"
-#include "MagicWallAction.h"
-#include "MineralAction.h"
-#include "OutboxAction.h"
-#include "PlayerAction.h"
-#include "RockfordAction.h"
-#include "GameObjects.h"
 
 
 ActionMapping::ActionMapping()
@@ -29,21 +16,21 @@ ActionMapping::ActionMapping(PositionChecker positionChecker, GameEffects gameEf
 
 void ActionMapping::InitMapping()
 {
-	AmoebaAction amoeba = AmoebaAction(positionChecker);
-	DexplosionAction dexplosion = DexplosionAction();
-	EnemyAction enemy = EnemyAction(gameEffects, positionChecker);
-	ExplosionAction explosion = ExplosionAction();
-	MineralAction mineral = MineralAction(gameSupport);
-	FallingAction falling = FallingAction(gameEffects, mineral);
-	InboxAction inbox = InboxAction();
-	MagicWallAction magicwall = MagicWallAction();
+	amoeba = AmoebaAction(positionChecker);
+	dexplosion = DexplosionAction();
+	enemy = EnemyAction(gameEffects, positionChecker);
+	explosion = ExplosionAction();
+	mineral = MineralAction(gameSupport);
+	falling = FallingAction(gameEffects, mineral);
+	inbox = InboxAction();
+	magicwall = MagicWallAction();
 
-	OutboxAction outbox = OutboxAction();
-	PlayerAction player = PlayerAction(gameEffects, positionChecker);
-	RockfordAction rockford = RockfordAction(gameEffects, positionChecker, inputHandler);
+	outbox = OutboxAction();
+	player = PlayerAction(gameEffects, positionChecker);
+	rockford = RockfordAction(gameEffects, positionChecker, inputHandler);
 
 	mapping[DATA_AMOEBA] = &amoeba;
-	mapping[DATA_OUTBOX] = &amoeba;
+	mapping[DATA_OUTBOX] = &outbox;
 	mapping[DATA_EXPLOSION1] = &explosion;
 	mapping[DATA_EXPLOSION2] = &explosion;
 	mapping[DATA_EXPLOSION3] = &explosion;

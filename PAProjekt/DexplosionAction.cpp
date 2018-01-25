@@ -6,9 +6,6 @@ DexplosionAction::DexplosionAction()
 }
 
 
-DexplosionAction::~DexplosionAction()
-{
-}
 
 void DexplosionAction::PerformAction(GameInfo * game, int cave[CAVE_WIDTH][CAVE_HEIGHT], ActionContext & context)
 {

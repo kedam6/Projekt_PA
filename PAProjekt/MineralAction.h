@@ -10,7 +10,6 @@ private:
 public:
 	MineralAction();
 	MineralAction(GameSupport support);
-	~MineralAction();
 
 	// Inherited via Action
 	void PerformAction(GameInfo * game, int cave[CAVE_WIDTH][CAVE_HEIGHT], ActionContext & context) override;

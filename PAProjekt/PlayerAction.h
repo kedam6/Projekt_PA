@@ -12,7 +12,6 @@ private:
 public:
 	PlayerAction();
 	PlayerAction(GameEffects gameEffects, PositionChecker positionChecker);
-	~PlayerAction();
 
 	// Inherited via Action
 	virtual void PerformAction(GameInfo * game, int cave[CAVE_WIDTH][CAVE_HEIGHT], ActionContext & context) override;

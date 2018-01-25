@@ -13,9 +13,6 @@ AmoebaAction::AmoebaAction(PositionChecker posChecker)
 }
 
 
-AmoebaAction::~AmoebaAction()
-{
-}
 
 void AmoebaAction::PerformAction(GameInfo * game, int cave[CAVE_WIDTH][CAVE_HEIGHT], ActionContext & context)
 {
@@ -28,7 +25,7 @@ void AmoebaAction::PerformAction(GameInfo * game, int cave[CAVE_WIDTH][CAVE_HEIG
 	}
 	else
 	{
-		for (int dir = 1; dir<5; dir++)
+		for (int dir = 1; dir < 5; dir++)
 		{
 			if (
 				(cave[x + posChecker.MoveX(dir)][y + posChecker.MoveY(dir)] == DATA_SPACE) ||

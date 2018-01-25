@@ -13,9 +13,6 @@ EnemyAction::EnemyAction(GameEffects gameEffects, PositionChecker positionChecke
 }
 
 
-EnemyAction::~EnemyAction()
-{
-}
 
 void EnemyAction::PerformAction(GameInfo * game, int cave[CAVE_WIDTH][CAVE_HEIGHT], ActionContext & context)
 {

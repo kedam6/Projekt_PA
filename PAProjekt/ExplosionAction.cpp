@@ -7,9 +7,6 @@ ExplosionAction::ExplosionAction()
 }
 
 
-ExplosionAction::~ExplosionAction()
-{
-}
 
 void ExplosionAction::PerformAction(GameInfo * game, int cave[CAVE_WIDTH][CAVE_HEIGHT], ActionContext & context)
 {

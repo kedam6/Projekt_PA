@@ -10,7 +10,6 @@ private:
 public:
 	AmoebaAction();
 	AmoebaAction(PositionChecker posChecker);
-	~AmoebaAction();
 
 	// Inherited via Action
 	virtual void PerformAction(GameInfo * game, int cave[CAVE_WIDTH][CAVE_HEIGHT], ActionContext & context) override;

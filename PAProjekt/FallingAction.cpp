@@ -13,9 +13,6 @@ FallingAction::FallingAction(GameEffects gameEffects, MineralAction mineralActio
 }
 
 
-FallingAction::~FallingAction()
-{
-}
 
 void FallingAction::PerformAction(GameInfo * game, int cave[CAVE_WIDTH][CAVE_HEIGHT], ActionContext & context)
 {

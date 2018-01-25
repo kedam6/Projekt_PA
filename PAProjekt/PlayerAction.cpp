@@ -13,9 +13,6 @@ PlayerAction::PlayerAction(GameEffects gameEffects, PositionChecker positionChec
 }
 
 
-PlayerAction::~PlayerAction()
-{
-}
 
 void PlayerAction::PerformAction(GameInfo * game, int cave[CAVE_WIDTH][CAVE_HEIGHT], ActionContext & context)
 {

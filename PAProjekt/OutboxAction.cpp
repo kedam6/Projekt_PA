@@ -7,9 +7,6 @@ OutboxAction::OutboxAction()
 }
 
 
-OutboxAction::~OutboxAction()
-{
-}
 
 void OutboxAction::PerformAction(GameInfo * game, int cave[CAVE_WIDTH][CAVE_HEIGHT], ActionContext & context)
 {

@@ -14,10 +14,6 @@ RockfordAction::RockfordAction()
 }
 
 
-RockfordAction::~RockfordAction()
-{
-}
-
 void RockfordAction::PerformAction(GameInfo * game, int cave[CAVE_WIDTH][CAVE_HEIGHT], ActionContext & context)
 {
 	int x = context.x;
