@@ -5,8 +5,6 @@
 
 class GameFactory : public IFactory<Game>
 {
-//private:
-	//GlobalInstances globalInstances;
 public:
 	GameFactory();
 	~GameFactory();

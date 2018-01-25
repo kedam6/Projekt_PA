@@ -150,6 +150,15 @@
     <ClCompile Include="Color.cpp">
       <Filter>Source Files\Business\Models</Filter>
     </ClCompile>
+    <ClCompile Include="FpsLimitter.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMapper.cpp">
+      <Filter>Source Files\Inputs</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>Source Files\Inputs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="lib\SDL2.dll">
@@ -251,6 +260,15 @@
     </ClInclude>
     <ClInclude Include="Color.h">
       <Filter>Header Files\Business\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="FpsLimitter.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>Header Files\Inputs</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMapper.h">
+      <Filter>Header Files\Inputs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

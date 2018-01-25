@@ -27,8 +27,6 @@ Engine::~Engine()
 
 void Engine::Process(GameInfo * game)
 {
-
-
 	game->Tick++;
 	int tick = game->Tick;
 

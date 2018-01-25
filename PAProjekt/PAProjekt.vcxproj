@@ -123,6 +123,7 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="ColorRepository.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="FpsLimitter.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEffects.cpp" />
     <ClCompile Include="GameFactory.cpp" />
@@ -132,6 +133,8 @@
     <ClCompile Include="GameSupport.cpp" />
     <ClCompile Include="GlobalInstances.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="KeyMapper.cpp" />
     <ClCompile Include="LookupTable.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NoiseMaker.cpp" />
@@ -160,6 +163,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="ColorRepository.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="FpsLimitter.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameEffects.h" />
     <ClInclude Include="GameFactory.h" />
@@ -172,7 +176,9 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="IFactory.h" />
     <ClInclude Include="GameObjects.h" />
+    <ClInclude Include="InputHandler.h" />
     <ClInclude Include="IRepository.h" />
+    <ClInclude Include="KeyMapper.h" />
     <ClInclude Include="LookupTable.h" />
     <ClInclude Include="NoiseMaker.h" />
     <ClInclude Include="PixelBuffer.h" />
