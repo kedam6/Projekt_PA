@@ -18,6 +18,8 @@
 #include "NoiseMaker.h"
 #include "Sin32LookupTable.h"
 #include "Sin64LookupTable.h"
+#include "ActionMapping.h"
+#include "ActionHandler.h"
 
 //slabe podejscie do DI ale coz
 
@@ -44,6 +46,8 @@ private:
 	Sin32LookupTable sin32LUT;
 	NoiseMaker noiseMaker;
 	GameManager gameManager;
+	ActionHandler actionHandler;
+	ActionMapping actionMapping;
 
 public:
 	GlobalInstances()
@@ -63,8 +67,10 @@ public:
 		renderer = Renderer(colorRepo);
 		noiseMaker = NoiseMaker(gameSupport);
 		stageCreator = StageCreator(graphics);
+		actionMapping = ActionMapping(posChecker, gameEffects, gameSupport, inputHandler);
+		actionHandler = ActionHandler(actionMapping);
 		initializer = GameInitInfo(graphics, renderer, posChecker, gameEffects, support, noiseMaker, stageCreator);
-		gameManager = GameManager(sdlUtils, initializer, renderer, posChecker, graphics, gameEffects, support);
+		gameManager = GameManager(sdlUtils, initializer, renderer, posChecker, graphics, gameEffects, support, actionHandler);
 		engine = Engine(sdlUtils, initializer, renderer, posChecker, graphics, gameEffects, support, gameManager);
 	}
 	~GlobalInstances();

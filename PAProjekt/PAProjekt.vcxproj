@@ -118,14 +118,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Action.cpp" />
+    <ClCompile Include="ActionContext.cpp" />
     <ClCompile Include="ActionHandler.cpp" />
     <ClCompile Include="ActionMapping.cpp" />
+    <ClCompile Include="AmoebaAction.cpp" />
     <ClCompile Include="BaseAction.cpp" />
+    <ClCompile Include="BlankAction.cpp" />
     <ClCompile Include="Cave.cpp" />
     <ClCompile Include="CaveFactory.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="ColorRepository.cpp" />
+    <ClCompile Include="DexplosionAction.cpp" />
+    <ClCompile Include="EnemyAction.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="ExplosionAction.cpp" />
+    <ClCompile Include="FallingAction.cpp" />
     <ClCompile Include="FpsLimitter.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEffects.cpp" />
@@ -137,15 +145,21 @@
     <ClCompile Include="GameSupport.cpp" />
     <ClCompile Include="GlobalInstances.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="InboxAction.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="KeyMapper.cpp" />
     <ClCompile Include="LookupTable.cpp" />
+    <ClCompile Include="MagicWallAction.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapHandler.cpp" />
+    <ClCompile Include="MineralAction.cpp" />
     <ClCompile Include="NoiseMaker.cpp" />
+    <ClCompile Include="OutboxAction.cpp" />
     <ClCompile Include="PixelBuffer.cpp" />
+    <ClCompile Include="PlayerAction.cpp" />
     <ClCompile Include="PositionChecker.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="RockfordAction.cpp" />
     <ClCompile Include="SdlUtils.cpp" />
     <ClCompile Include="Sin32LookupTable.cpp" />
     <ClCompile Include="Sin64LookupTable.cpp" />
@@ -162,15 +176,23 @@
     <Library Include="lib\SDL2test.lib" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Action.h" />
+    <ClInclude Include="ActionContext.h" />
     <ClInclude Include="ActionHandler.h" />
     <ClInclude Include="ActionMapping.h" />
+    <ClInclude Include="AmoebaAction.h" />
     <ClInclude Include="BaseAction.h" />
+    <ClInclude Include="BlankAction.h" />
     <ClInclude Include="Cave.h" />
     <ClInclude Include="CaveFactory.h" />
     <ClInclude Include="CaveInfo.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="ColorRepository.h" />
+    <ClInclude Include="DexplosionAction.h" />
+    <ClInclude Include="EnemyAction.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="ExplosionAction.h" />
+    <ClInclude Include="FallingAction.h" />
     <ClInclude Include="FpsLimitter.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameEffects.h" />
@@ -185,15 +207,21 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="IFactory.h" />
     <ClInclude Include="GameObjects.h" />
+    <ClInclude Include="InboxAction.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="IRepository.h" />
     <ClInclude Include="KeyMapper.h" />
     <ClInclude Include="LookupTable.h" />
+    <ClInclude Include="MagicWallAction.h" />
     <ClInclude Include="MapHandler.h" />
+    <ClInclude Include="MineralAction.h" />
     <ClInclude Include="NoiseMaker.h" />
+    <ClInclude Include="OutboxAction.h" />
     <ClInclude Include="PixelBuffer.h" />
+    <ClInclude Include="PlayerAction.h" />
     <ClInclude Include="PositionChecker.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RockfordAction.h" />
     <ClInclude Include="SdlUtils.h" />
     <ClInclude Include="Sin32LookupTable.h" />
     <ClInclude Include="Sin64LookupTable.h" />

@@ -48,7 +48,7 @@ bool GameManager::PlayerLost(GameInfo* game)
 	return game->Lost > 0;
 }
 
-void GameManager::MoveToNextLevel(GameInfo* game)
+bool GameManager::MoveToNextLevel(GameInfo* game)
 {
 	if (game->Won == RESULT_CYCLES)
 	{
@@ -68,11 +68,12 @@ void GameManager::MoveToNextLevel(GameInfo* game)
 		}
 
 		StartNewGame(game, old_cave, old_difficulty);
-		return;
+		return true;
 	}
+	return false;
 }
 
-void GameManager::RestartLevel(GameInfo* game)
+bool GameManager::RestartLevel(GameInfo* game)
 {
 	if (game->Lost == RESULT_CYCLES)
 	{
@@ -80,29 +81,34 @@ void GameManager::RestartLevel(GameInfo* game)
 		int old_difficulty = game->Difficulty;
 
 		StartNewGame(game, old_cave, old_difficulty);
-		return;
+		return true;
 	}
+
+	return false;
 }
 
 void GameManager::Process(GameInfo* game)
 {
 	game->Tick++;
-	int tick = game->Tick;
 
-	int move_tick = 0;
-	int fall_tick = 0;
-	int expl_tick = 0;
+	int moveTick = 0;
+	int fallTick = 0;
+
 
 	CheckForSecretDevKey(game);
 
 	if (PlayerWon(game))
 	{
-		move_tick = 1;
-		fall_tick = 1;
+		moveTick = 1;
+		fallTick = 1;
 
+		//25 cykli gry aby pokazac graczowi jego zwyciestwo
 		game->Won++;
 
-		MoveToNextLevel(game);
+		bool isSafeToReturn = MoveToNextLevel(game);
+		
+		if(isSafeToReturn)
+			return;
 	}
 
 
@@ -111,30 +117,29 @@ void GameManager::Process(GameInfo* game)
 		//25 cykli gry aby pokazac graczowi jego porazke
 		game->Lost++;
 
-		RestartLevel(game);
+		bool isSafeToReturn = RestartLevel(game);
+		
+		if (isSafeToReturn)
+			return;
 	}
 
-	int new_cavemap[CAVE_WIDTH][CAVE_HEIGHT];
-	mapHandler.SaveNewMap(game->cavemap, new_cavemap);
+	int newMap[CAVE_WIDTH][CAVE_HEIGHT];
+	mapHandler.SaveNewMap(game->cavemap, newMap);
 
-	int amoeba_possible = 0;
-	int valid_rockford = 0;
 
-	actionHandler.HandleAllMapChanges(game, new_cavemap);
 
-	if ((valid_rockford == 0) && (game->Lost == 0))
-		game->Lost = 1;
-	
-	game->AmoebaSpace = amoeba_possible;
+	actionHandler.HandleAllMapChanges(game, newMap, moveTick, fallTick);
 
-	for (int y = 1; y < CAVE_HEIGHT - 1; y++)
-	{
-		for (int x = 0; x < CAVE_WIDTH; x++)
-		{
-			game->cavemap[x][y] = new_cavemap[x][y];
-		}
-	}
-	mapHandler.SaveNewMap(new_cavemap, game->cavemap);
+
+
+	//for (int y = 1; y < CAVE_HEIGHT - 1; y++)
+	//{
+	//	for (int x = 0; x < CAVE_WIDTH; x++)
+	//	{
+	//		game->cavemap[x][y] = newMap[x][y];
+	//	}
+	//}
+	mapHandler.SaveNewMap(newMap, game->cavemap);
 
 	sdlUtils.SdlReleaseKeys();
 }

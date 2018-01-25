@@ -39,9 +39,9 @@ public:
 
 	bool PlayerLost(GameInfo * game);
 
-	void MoveToNextLevel(GameInfo * game);
+	bool MoveToNextLevel(GameInfo * game);
 
-	void RestartLevel(GameInfo * game);
+	bool RestartLevel(GameInfo * game);
 
 	void Process(GameInfo* game);
 };

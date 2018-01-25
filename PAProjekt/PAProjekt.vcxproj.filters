@@ -73,6 +73,18 @@
     <Filter Include="Source Files\Business\Models">
       <UniqueIdentifier>{230ada0a-77f1-4a00-b89d-012da3d18dd7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Actions">
+      <UniqueIdentifier>{c98a7d89-6ab6-47a2-bf85-8889d949ed86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Actions\ActionImpl">
+      <UniqueIdentifier>{d33c4e78-ea9d-4dda-8ce9-42f6b8c193d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actions">
+      <UniqueIdentifier>{ef6bbac5-1624-44e7-9764-d5ac75faa3bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Actions\ActionImpl">
+      <UniqueIdentifier>{fecd9474-6db1-4574-856e-a0d197e7981f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -160,16 +172,58 @@
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="MapHandler.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="ActionHandler.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Action.cpp">
+      <Filter>Source Files\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionContext.cpp">
+      <Filter>Source Files\Actions</Filter>
     </ClCompile>
     <ClCompile Include="ActionMapping.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionHandler.cpp">
+      <Filter>Source Files\Actions</Filter>
     </ClCompile>
     <ClCompile Include="BaseAction.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="AmoebaAction.cpp">
+      <Filter>Source Files\Actions\ActionImpl</Filter>
+    </ClCompile>
+    <ClCompile Include="BlankAction.cpp">
+      <Filter>Source Files\Actions\ActionImpl</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyAction.cpp">
+      <Filter>Source Files\Actions\ActionImpl</Filter>
+    </ClCompile>
+    <ClCompile Include="DexplosionAction.cpp">
+      <Filter>Source Files\Actions\ActionImpl</Filter>
+    </ClCompile>
+    <ClCompile Include="ExplosionAction.cpp">
+      <Filter>Source Files\Actions\ActionImpl</Filter>
+    </ClCompile>
+    <ClCompile Include="FallingAction.cpp">
+      <Filter>Source Files\Actions\ActionImpl</Filter>
+    </ClCompile>
+    <ClCompile Include="InboxAction.cpp">
+      <Filter>Source Files\Actions\ActionImpl</Filter>
+    </ClCompile>
+    <ClCompile Include="MagicWallAction.cpp">
+      <Filter>Source Files\Actions\ActionImpl</Filter>
+    </ClCompile>
+    <ClCompile Include="MineralAction.cpp">
+      <Filter>Source Files\Actions\ActionImpl</Filter>
+    </ClCompile>
+    <ClCompile Include="OutboxAction.cpp">
+      <Filter>Source Files\Actions\ActionImpl</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerAction.cpp">
+      <Filter>Source Files\Actions\ActionImpl</Filter>
+    </ClCompile>
+    <ClCompile Include="RockfordAction.cpp">
+      <Filter>Source Files\Actions\ActionImpl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -286,16 +340,58 @@
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="MapHandler.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Action.h">
+      <Filter>Header Files\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionContext.h">
+      <Filter>Header Files\Actions</Filter>
     </ClInclude>
     <ClInclude Include="ActionHandler.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Actions</Filter>
     </ClInclude>
     <ClInclude Include="ActionMapping.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="BlankAction.h">
+      <Filter>Header Files\Actions\ActionImpl</Filter>
     </ClInclude>
     <ClInclude Include="BaseAction.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="AmoebaAction.h">
+      <Filter>Header Files\Actions\ActionImpl</Filter>
+    </ClInclude>
+    <ClInclude Include="DexplosionAction.h">
+      <Filter>Header Files\Actions\ActionImpl</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyAction.h">
+      <Filter>Header Files\Actions\ActionImpl</Filter>
+    </ClInclude>
+    <ClInclude Include="ExplosionAction.h">
+      <Filter>Header Files\Actions\ActionImpl</Filter>
+    </ClInclude>
+    <ClInclude Include="FallingAction.h">
+      <Filter>Header Files\Actions\ActionImpl</Filter>
+    </ClInclude>
+    <ClInclude Include="InboxAction.h">
+      <Filter>Header Files\Actions\ActionImpl</Filter>
+    </ClInclude>
+    <ClInclude Include="MagicWallAction.h">
+      <Filter>Header Files\Actions\ActionImpl</Filter>
+    </ClInclude>
+    <ClInclude Include="MineralAction.h">
+      <Filter>Header Files\Actions\ActionImpl</Filter>
+    </ClInclude>
+    <ClInclude Include="OutboxAction.h">
+      <Filter>Header Files\Actions\ActionImpl</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerAction.h">
+      <Filter>Header Files\Actions\ActionImpl</Filter>
+    </ClInclude>
+    <ClInclude Include="RockfordAction.h">
+      <Filter>Header Files\Actions\ActionImpl</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
