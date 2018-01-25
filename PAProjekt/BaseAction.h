@@ -9,6 +9,6 @@ public:
 	BaseAction();
 	~BaseAction();
 
-	virtual void PerformAction(GameInfo* game, int cave[CAVE_WIDTH][CAVE_HEIGHT], ActionContext& context) {}
+	virtual void PerformAction(GameInfo* game, int cave[CAVE_WIDTH][CAVE_HEIGHT], ActionContext& context) = 0;
 };
 

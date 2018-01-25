@@ -4,7 +4,7 @@
 #include "GameInitInfo.h"
 #include "PositionChecker.h"
 #include <stdlib.h>
-#include <memory>
+
 
 Engine::Engine(SdlUtils utils, GameInitInfo initializer, Renderer renderer, PositionChecker positionChecker, Graphics graphics, GameEffects gameEff, GameSupport gameSupport, GameManager gameManager)
 {
