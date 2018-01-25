@@ -43,6 +43,7 @@ private:
 	FpsLimitter fpsLimit;
 	Sin32LookupTable sin32LUT;
 	NoiseMaker noiseMaker;
+	GameManager gameManager;
 
 public:
 	GlobalInstances()
@@ -63,7 +64,8 @@ public:
 		noiseMaker = NoiseMaker(gameSupport);
 		stageCreator = StageCreator(graphics);
 		initializer = GameInitInfo(graphics, renderer, posChecker, gameEffects, support, noiseMaker, stageCreator);
-		engine = Engine(sdlUtils, initializer, renderer, posChecker, graphics, gameEffects, support);
+		gameManager = GameManager(sdlUtils, initializer, renderer, posChecker, graphics, gameEffects, support);
+		engine = Engine(sdlUtils, initializer, renderer, posChecker, graphics, gameEffects, support, gameManager);
 	}
 	~GlobalInstances();
 

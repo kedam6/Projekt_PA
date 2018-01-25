@@ -1,4 +1,5 @@
 #pragma once
+#include "GameManager.h"
 #include "GameInfo.h"
 #include "GameInitInfo.h"
 #include "Graphics.h"
@@ -20,11 +21,12 @@ private:
 	GameEffects gameEffects;
 	GameSupport support;
 	SdlUtils sdlUtils;
+	GameManager manager;
 
 	PixelBuffer buffer;
 
 public:
-	Engine(SdlUtils utils, GameInitInfo initializer, Renderer renderer, PositionChecker positionChecker, Graphics graphics, GameEffects gameEff, GameSupport gameSupport);
+	Engine(SdlUtils utils, GameInitInfo initializer, Renderer renderer, PositionChecker positionChecker, Graphics graphics, GameEffects gameEff, GameSupport gameSupport, GameManager gameManager);
 	Engine();
 	~Engine();
 

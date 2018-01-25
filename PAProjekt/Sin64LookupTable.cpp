@@ -6,7 +6,6 @@ Sin64LookupTable::Sin64LookupTable()
 {
 }
 
-
 Sin64LookupTable::~Sin64LookupTable()
 {
 }

@@ -118,6 +118,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActionHandler.cpp" />
+    <ClCompile Include="ActionMapping.cpp" />
+    <ClCompile Include="BaseAction.cpp" />
     <ClCompile Include="Cave.cpp" />
     <ClCompile Include="CaveFactory.cpp" />
     <ClCompile Include="Color.cpp" />
@@ -130,6 +133,7 @@
     <ClCompile Include="GameInfo.cpp" />
     <ClCompile Include="GameInfoFactory.cpp" />
     <ClCompile Include="GameInitInfo.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameSupport.cpp" />
     <ClCompile Include="GlobalInstances.cpp" />
     <ClCompile Include="Graphics.cpp" />
@@ -137,6 +141,7 @@
     <ClCompile Include="KeyMapper.cpp" />
     <ClCompile Include="LookupTable.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MapHandler.cpp" />
     <ClCompile Include="NoiseMaker.cpp" />
     <ClCompile Include="PixelBuffer.cpp" />
     <ClCompile Include="PositionChecker.cpp" />
@@ -157,6 +162,9 @@
     <Library Include="lib\SDL2test.lib" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActionHandler.h" />
+    <ClInclude Include="ActionMapping.h" />
+    <ClInclude Include="BaseAction.h" />
     <ClInclude Include="Cave.h" />
     <ClInclude Include="CaveFactory.h" />
     <ClInclude Include="CaveInfo.h" />
@@ -170,6 +178,7 @@
     <ClInclude Include="GameInfo.h" />
     <ClInclude Include="GameInfoFactory.h" />
     <ClInclude Include="GameInitInfo.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameSupport.h" />
     <ClInclude Include="GlobalInstances.h" />
     <ClInclude Include="GlobalValues.h" />
@@ -180,6 +189,7 @@
     <ClInclude Include="IRepository.h" />
     <ClInclude Include="KeyMapper.h" />
     <ClInclude Include="LookupTable.h" />
+    <ClInclude Include="MapHandler.h" />
     <ClInclude Include="NoiseMaker.h" />
     <ClInclude Include="PixelBuffer.h" />
     <ClInclude Include="PositionChecker.h" />
