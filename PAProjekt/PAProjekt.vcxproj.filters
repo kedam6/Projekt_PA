@@ -147,6 +147,9 @@
     <ClCompile Include="Sin64LookupTable.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Source Files\Business\Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="lib\SDL2.dll">
@@ -245,6 +248,9 @@
     </ClInclude>
     <ClInclude Include="Sin64LookupTable.h">
       <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Header Files\Business\Models</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

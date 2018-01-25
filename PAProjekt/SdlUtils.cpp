@@ -141,12 +141,13 @@ static void keydown(int key)
 
 int SdlUtils::SdlHandleEvents(void * pixels)
 {
-	SDL_UpdateTexture(texture, NULL, pixels, row * sizeof(Uint32));//update only the updated rects
-																   //	SDL_RenderClear(renderer);//neccessary?
+	//potrzebna jest tablica void tutaj, nic nie moge z tym zrobic...
+	SDL_UpdateTexture(texture, NULL, pixels, row * sizeof(Uint32));
+	//renderujemy od nowa texture jesli to jest wymagane
 	SDL_RenderCopy(renderer, texture, NULL, NULL);
 	SDL_RenderPresent(renderer);
 
-	// limit to fps
+	//limitujemy FPS
 	int current_tick = SDL_GetTicks();
 	if ((current_tick - init_tick) < fpsMill)
 	{

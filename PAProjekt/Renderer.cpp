@@ -119,10 +119,10 @@ void Renderer::WriteInfoPart(GameInfo& game, char display[CAVE_WIDTH][(INFO_HEIG
 	}
 
 	if ((game.DiamondsRequired - game.DiamondsCollected) > 0)
-		RenderNum(game.DiamondsRequired - game.DiamondsCollected, 1, 22, 3, 0, DATA_COLOR_PURPLE, DATA_BOULDER, display);
+		RenderNum(game.DiamondsRequired - game.DiamondsCollected, 1, 22, 3, 0, DATA_MAGICWALL, DATA_STEELWALL, display);
 
 	if ((game.CaveTime - (game.Tick / 8)) > 0)
-		RenderNum(game.CaveTime - (game.Tick / 8), 28, 22, 3, 0, DATA_MAGICWALL, DATA_BOULDER, display);
+		RenderNum(game.CaveTime - (game.Tick / 8), 28, 22, 3, 0, DATA_MAGICWALL, DATA_STEELWALL, display);
 }
 
 void Renderer::WriteToPixelBuffer(char display[CAVE_WIDTH][(INFO_HEIGHT + CAVE_HEIGHT)], unsigned int zoom, unsigned int* pixelBuffer)

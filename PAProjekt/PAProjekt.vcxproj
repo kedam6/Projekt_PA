@@ -120,6 +120,7 @@
   <ItemGroup>
     <ClCompile Include="Cave.cpp" />
     <ClCompile Include="CaveFactory.cpp" />
+    <ClCompile Include="Color.cpp" />
     <ClCompile Include="ColorRepository.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="Cave.h" />
     <ClInclude Include="CaveFactory.h" />
     <ClInclude Include="CaveInfo.h" />
+    <ClInclude Include="Color.h" />
     <ClInclude Include="ColorRepository.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Game.h" />
