@@ -134,6 +134,7 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="ExplosionAction.cpp" />
     <ClCompile Include="FallingAction.cpp" />
+    <ClCompile Include="FontLUT.cpp" />
     <ClCompile Include="FpsLimitter.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameEffects.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="ExplosionAction.h" />
     <ClInclude Include="FallingAction.h" />
+    <ClInclude Include="FontLUT.h" />
     <ClInclude Include="FpsLimitter.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameEffects.h" />

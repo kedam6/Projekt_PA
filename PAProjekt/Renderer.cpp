@@ -4,17 +4,16 @@
 #include "Graphics.h"
 #include <random>
 
-//font dla liczb 1 2 3 4 5 6 7 8 9 0
-static unsigned int font5x3[] = { 32319,17393,24253,32437,31879,30391,29343,31905,32447,31911 };
-
 
 Renderer::Renderer()
 {
+	fonts = FontLUT();
 }
 
 Renderer::Renderer(ColorRepository repo)
 {
 	this->colorRepo = repo;
+	fonts = FontLUT();
 }
 
 
@@ -23,7 +22,7 @@ Renderer::~Renderer()
 }
 
 
-void RenderDigit(int x, int y, int digit, int typea, int typeb, char display[CAVE_WIDTH][(INFO_HEIGHT + CAVE_HEIGHT)])
+void Renderer::RenderDigit(int x, int y, int digit, int typea, int typeb, char display[CAVE_WIDTH][(INFO_HEIGHT + CAVE_HEIGHT)])
 {
 	for (int i = 0; i<3; i++)
 	{
@@ -33,7 +32,7 @@ void RenderDigit(int x, int y, int digit, int typea, int typeb, char display[CAV
 				display[x + i][y + j] = typeb;
 			else
 			{
-				if (font5x3[digit] & (1 << (i * 5 + j)))
+				if (fonts[digit] & (1 << (i * 5 + j)))
 				{
 					display[x + i][y + j] = typea;
 				}
@@ -47,7 +46,7 @@ void RenderDigit(int x, int y, int digit, int typea, int typeb, char display[CAV
 	}
 }
 
-void RenderDigits(int x, int y, const char *text, int typea, int typeb, char display[CAVE_WIDTH][(INFO_HEIGHT + CAVE_HEIGHT)])
+void Renderer::RenderDigits(int x, int y, const char *text, int typea, int typeb, char display[CAVE_WIDTH][(INFO_HEIGHT + CAVE_HEIGHT)])
 {
 	while (*text)
 	{

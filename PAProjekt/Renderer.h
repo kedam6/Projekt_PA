@@ -3,13 +3,19 @@
 #include "Graphics.h"
 #include "PixelBuffer.h"
 #include "ColorRepository.h"
+#include "FontLUT.h"
 
 class Renderer
 {
 private:
 	int _renderTick;
 	ColorRepository colorRepo;
+	FontLUT fonts;
 
+
+	void RenderDigit(int x, int y, int digit, int typea, int typeb, char display[CAVE_WIDTH][(INFO_HEIGHT + CAVE_HEIGHT)]);
+
+	void RenderDigits(int x, int y, const char * text, int typea, int typeb, char display[CAVE_WIDTH][(INFO_HEIGHT + CAVE_HEIGHT)]);
 
 	void HandleUncover(GameInfo & game);
 	void WriteCavePart(GameInfo & game, char display[CAVE_WIDTH][(INFO_HEIGHT + CAVE_HEIGHT)]);

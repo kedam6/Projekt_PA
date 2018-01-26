@@ -225,6 +225,9 @@
     <ClCompile Include="RockfordAction.cpp">
       <Filter>Source Files\Actions\ActionImpl</Filter>
     </ClCompile>
+    <ClCompile Include="FontLUT.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="lib\SDL2.dll">
@@ -392,6 +395,9 @@
     </ClInclude>
     <ClInclude Include="RockfordAction.h">
       <Filter>Header Files\Actions\ActionImpl</Filter>
+    </ClInclude>
+    <ClInclude Include="FontLUT.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
